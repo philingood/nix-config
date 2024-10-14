@@ -11,7 +11,6 @@
     systemPath = ["/opt/homebrew/bin" "/opt/homebrew/sbin"];
     etc = {
       darwin.source = "${inputs.darwin}";
-      hosts.source = "${inputs.sbhosts}/hosts";
     };
     # Use a custom configuration.nix location.
     # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -104,9 +103,6 @@
           echo "Turning on verbose boot startup"
           sudo nvram boot-args="-v"
 
-          echo "Restoring system hotkeys and amethyst hotkeys"
-          defaults import com.apple.symbolichotkeys ${./plists/symbolichotkeys.plist}
-          defaults import com.amethyst.Amethyst ${./plists/amethyst.plist}
         '';
         # to create an importable plist, see export-plists.sh
       };
@@ -180,5 +176,4 @@
   # allow touchid to auth sudo -- this comes from pam.nix, which needs to be loaded before this
   # it's now standard to nix-darwin, but without the special sauch needed for tmux, so we
   # will continue using our custom script
-  security.pam.enableCustomSudoTouchIdAuth = true;
 }

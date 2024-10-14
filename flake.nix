@@ -1,18 +1,31 @@
 {
   description = "Hacker`s flake";
   inputs = {
-    # Where we get most of our software. Giant mono repo with recipes
-    # called derivations that say how to build software.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # nixos-22.11
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    ## TODO: not sure if it matters, but probably worth threading -darwin version through on darwin builds
+    nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # defaulting to unstable these days
 
-    # Manages configs links things into your home directory
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Controls system level software and settings including fonts
+    flake-compat = {
+      # Needed along with default.nix in root to allow nixd lsp to do completions
+      # See: https://github.com/nix-community/nixd/tree/main/docs/examples/flake
+      url = "github:inclyc/flake-compat";
+      flake = false;
+    };
     darwin.url = "github:lnl7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    nps.url = "github:OleMussmann/Nix-Package-Search"; # use nps to quick search packages - requires gnugrep though
+    nps.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
+    #nix-homebrew.inputs.brew-src.follows = "brew-src";
     nix-homebrew.inputs.nix-darwin.follows = "darwin";
     # Declarative, pinned homebrew tap management
     homebrew-core.url = "github:homebrew/homebrew-core";
@@ -37,17 +50,40 @@
     , nixos-hardware
     , nix-homebrew
     , ...
-    }: {
+    }: let 
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system;
+        inherit
+          (import ./modules/overlays.nix {
+            inherit inputs nixpkgs-unstable nixpkgs-stable nixpkgs-stable-darwin;
+          })
+          overlays
+          ;
+        config = import ./config.nix;
+      };
+
+    mkHome = username: modules: {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "bak";
+        extraSpecialArgs = {inherit inputs username;};
+        users."${username}".imports = modules;
+      };
+    };
+
+   in {
       darwinConfigurations =
         let
-          username = "hacker";
+          username = "user";
         in
         {
-          attolia = darwin.lib.darwinSystem {
+          HackerBook = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
             pkgs = import nixpkgs { system = "aarch64-darwin"; };
             specialArgs = {
-              inherit sbhosts inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
+              inherit inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
             };
             modules = [
               nix-homebrew.darwinModules.nix-homebrew # Make it so I can pin my homebrew taps and actually roll things back
