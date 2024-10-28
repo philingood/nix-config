@@ -87,7 +87,6 @@ let
         pkgs.colima # command line docker server replacement
         pkgs.docker
         pkgs.utm
-        pkgs.raycast
       ]);
 in
 {
@@ -199,36 +198,6 @@ in
     #inputs.gh-feed
     settings = { git_protocol = "ssh"; };
   };
-  programs.mpv = {
-    enable = true;
-    # TODO: Same problem as below when using unstable
-    package = pkgs.mpv;
-    # TODO: Commenting out scripts 2024-07-09 because they are causing an error
-    # around swift-wrapper-5.8 being broken
-    # scripts = with pkgs.stable.mpvScripts; [thumbnail sponsorblock];
-    config = {
-      # disable on-screen controller -- else I get a message saying I have to add this
-      osc = false;
-      # Use a large seekable RAM cache even for local input.
-      cache = true;
-      save-position-on-quit = false;
-      #x11-bypass-compositor = true;
-      #no-border = true;
-      msg-color = true;
-      pause = true;
-      # This will force use of h264 instead vp8/9 so hardware acceleration works
-      ytdl-format = "bv*[ext=mp4]+ba/b";
-      #ytdl-format = "bestvideo+bestaudio";
-      # have mpv use yt-dlp instead of youtube-dl
-      script-opts-append = "ytdl_hook-ytdl_path=${pkgs.yt-dlp}/bin/yt-dlp";
-      autofit-larger = "100%x95%"; # resize window in case it's larger than W%xH% of the screen
-      input-media-keys = "yes"; # enable/disable OSX media keys
-      hls-bitrate = "max"; # use max quality for HLS streams
-
-      user-agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/58.0";
-    };
-    defaultProfiles = [ "gpu-hq" ];
-  };
 
   programs.zsh = {
     enable = true;
@@ -319,25 +288,6 @@ in
       };
   };
 
-  programs.eza.enable = true; # replacement for "exa" which is now archived
-  /*
-    programs.pistol = {
-    # I've gone back to my pv.sh script for now
-    enable = false;
-    associations = [
-    {
-    mime = "text/*";
-    command = "bat --paging=never --color=always %pistol-filename%";
-    }
-    {
-    mime = "image/*";
-    command = "kitty +kitten icat --silent --transfer-mode=stream --stdin=no %pistol-filename%";
-    }
-    ];
-    };
-  */
-  # my preferred file explorer; mnemonic: list files
-
   # Nice shell history https://atuin.sh -- experimenting with this 2024-07-26
   programs.atuin = {
     enable = true;
@@ -390,65 +340,6 @@ in
         "$status"
         "$container"
         "$character"
-      ];
-      right_format = pkgs.lib.concatStrings [
-        "$cmd_duration"
-        "$shlvl"
-        "$docker_context"
-        "$package"
-        "$c"
-        "$cmake"
-        "$daml"
-        "$dart"
-        "$deno"
-        "$dotnet"
-        "$elixir"
-        "$elm"
-        "$erlang"
-        "$fennel"
-        "$golang"
-        "$guix_shell"
-        "$haskell"
-        "$haxe"
-        "$helm"
-        "$java"
-        "$julia"
-        "$kotlin"
-        "$gradle"
-        "$lua"
-        "$nim"
-        "$nodejs"
-        "$ocaml"
-        "$opa"
-        "$perl"
-        "$php"
-        "$pulumi"
-        "$purescript"
-        "$python"
-        "$raku"
-        "$rlang"
-        "$red"
-        "$ruby"
-        "$rust"
-        "$scala"
-        "$swift"
-        "$terraform"
-        "$vlang"
-        "$vagrant"
-        "$zig"
-        "$buf"
-        "$nix_shell"
-        "$conda"
-        "$meson"
-        "$spack"
-        "$memory_usage"
-        "$aws"
-        "$gcloud"
-        "$openstack"
-        "$azure"
-        "$env_var"
-        "$crystal"
-        "$custom"
       ];
       character = {
         success_symbol = "[❯](purple)";

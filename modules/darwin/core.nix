@@ -117,11 +117,6 @@
     };
   };
 
-  launchd.user.agents.raycast = {
-    serviceConfig.ProgramArguments = ["${pkgs.raycast}/Applications/Raycast.app/Contents/MacOS/Raycast"];
-    serviceConfig.RunAtLoad = true;
-  };
-
   documentation.enable = true; # temp disable 2024-07-06 to workaround issue
   # documentation.doc.enable = false;
   # documentation.man.enable = false;
@@ -154,7 +149,6 @@
       ];
     })
     # montserrat
-    vistafonts # needed for msoffice
   ];
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}" "darwin=/etc/${config.environment.etc.darwin.target}"];
@@ -171,7 +165,7 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 
   # allow touchid to auth sudo -- this comes from pam.nix, which needs to be loaded before this
   # it's now standard to nix-darwin, but without the special sauch needed for tmux, so we
