@@ -100,13 +100,10 @@
       "Microsoft PowerPoint" = 462062816;
       "Monodraw" = 920404675; # ASCII drawings
       "Vimari" = 1480933944;
-      # "Vinegar" = 1591303229;
       "WireGuard" = 1451685025;
       # "Xcode" = 497799835;
-      # "Yubico Authenticator" = 1497506650;
     };
     brews = [
-      "ansiweather"
       "brightness"
       "ca-certificates"
       "chkrootkit" # TODO: moved here 2024-03-25 since nix version is broken

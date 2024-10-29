@@ -1,7 +1,6 @@
 {
   inputs,
   username,
-  lib,
   pkgs,
   ...
 }: {
@@ -36,7 +35,6 @@
       else "/home/${username}";
   };
   nix = {
-    # package = pkgs.nixVersions.nix_2_11;
     package = pkgs.nix;
     extraOptions = ''
       keep-outputs = true
@@ -58,28 +56,17 @@
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
-        "https://zmre.cachix.org"
       ];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "zmre.cachix.org-1:WIE1U2a16UyaUVr+Wind0JM6pEXBe43PQezdPKoDWLE="
       ];
     };
 
-    #optimise.automatic = true;
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
     };
-    # From https://nixos.wiki/wiki/Flakes for pinning registry to system packages
-    # For reasons I don't understand, the lines below are breaking the build with `error: 'builtins.storePath' is not allowed in pure evaluation mode`
-    #registry = {
-    #  nixpkgs.to = {
-    #    type = "path";
-    #    path = pkgs.path;
-    #  };
-    #};
   };
 }
