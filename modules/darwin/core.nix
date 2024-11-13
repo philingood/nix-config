@@ -159,7 +159,6 @@
 
   # auto manage nixbld users with nix darwin
   nix.configureBuildUsers = true;
-  ids.uids.nixbld = lib.mkForce 30000;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
