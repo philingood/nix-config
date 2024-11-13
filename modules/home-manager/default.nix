@@ -11,7 +11,7 @@ let
       # filesystem
       fd
       ripgrep
-      du-dust
+      dust
       fzy
       curl
       duf # df alternative showing free disk space
@@ -56,6 +56,8 @@ let
       xh # rust version of httpie / better curl
 
       # misc
+      btop
+      brotli
       neofetch # display key software/version info in term
       vimv # shell script to bulk rename
       vulnix # check for live nix apps that are listed in NVD
