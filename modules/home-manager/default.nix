@@ -19,6 +19,7 @@ let
       ripgrep
       rsync
       tree
+      yazi
 
       # compression
       atool
@@ -56,10 +57,13 @@ let
       trippy # mtr alternative
       xh # rust version of httpie / better curl
 
-      # misc
+      ## dev
+      lazygit
+      devenv
+
+      ## misc
       btop
       brotli
-      lazygit
       neofetch # display key software/version info in term
       vimv # shell script to bulk rename
       vulnix # check for live nix apps that are listed in NVD
@@ -198,8 +202,6 @@ in
   programs.gh = {
     enable = true;
     package = pkgs.gh;
-    # Ones I have installed that aren't available in pkgs 2024-07-31:
-    #inputs.gh-feed
     settings = { git_protocol = "ssh"; };
   };
 
@@ -221,7 +223,10 @@ in
     };
     defaultKeymap = "viins";
     # things to add to .zshenv
-    sessionVariables = { };
+    sessionVariables = {
+      ALL_PROXY = "127.0.0.1:2081";
+      EDITOR = "vim";
+    };
     plugins = [
       {
         name = "zsh-nix-shell";
@@ -277,7 +282,7 @@ in
         # Cachix on my whole nix store is burning unnecessary bandwidth and time -- slowing things down rather than speeding up
         # From now on will just use for select personal flakes and things
         #dwswitch = "pushd ~; cachix watch-exec zmre darwin-rebuild -- switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
-        dwswitchx = "pushd ~; darwin-rebuild switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
+        dwswx = "pushd ~; darwin-rebuild switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
         dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
@@ -290,6 +295,25 @@ in
         noupdate = "pushd ~/.config/nixpkgs; nix flake update; popd; noswitch";
         noswitch = "pushd ~; sudo cachix watch-exec zmre nixos-rebuild -- switch --flake ~/.config/nixpkgs/.# ; popd";
       };
+  };
+  programs.vim = {
+    enable = true;
+    # extraConfig = builtins.readFile vim/vimrc;
+    settings = {
+       relativenumber = true;
+       number = true;
+    };
+    plugins = with pkgs.vimPlugins; [
+      idris-vim
+      sensible
+      vim-airline
+      The_NERD_tree # file system explorer
+      fugitive vim-gitgutter # git 
+      #YouCompleteMe
+      vim-abolish
+      command-t
+      vim-go
+    ];
   };
 
   # Nice shell history https://atuin.sh -- experimenting with this 2024-07-26
@@ -332,7 +356,7 @@ in
         "$git_branch"
         # "$git_commit"
         # "$git_state"
-        # "$git_status"
+        "$git_status"
         # "$git_metrics"
         "$hg_branch"
         "$pijul_channel"
@@ -375,11 +399,8 @@ in
         truncate_to_repo = false;
       };
       directory.substitutions = {
-        # Documents = " ";
-        # Downloads = " ";
-        # Music = " ";
-        # Pictures = " ";
-        "Library/Containers/co.noteplan.NotePlan3/Data/Library/Application Support/co.noteplan.NotePlan3" = "Notes";
+        Downloads = " ";
+        Developer = "☭ ";
       };
       package.disabled = true;
       package.format = "version [$version](bold green) ";
@@ -441,18 +462,6 @@ in
           mode = "~Search";
           action = "ToggleViMode";
         }
-        # cmd-{ and cmd-} and cmd-] and cmd-[ will switch tmux windows
-        # {
-        #   key = "LBracket";
-        #   mods = "Command";
-        #   # \x02 is ctrl-b so sequence below is ctrl-b, h
-        #   chars = "\\x02h";
-        # }
-        # {
-        #   key = "RBracket";
-        #   mods = "Command";
-        #   chars = "\\x02l";
-        # }
       ];
     };
   };
