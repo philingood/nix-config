@@ -173,6 +173,10 @@
         greedy = true;
       }
       {
+        name = "raycast";
+        greedy = true;
+      }
+      {
         name = "stolendata-mpv";
         greedy = true;
       }
