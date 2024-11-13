@@ -164,10 +164,6 @@
       }
       "qlstephen"
       "qlvideo"
-      # { # moving to nix pkgs version
-      #   name = "raycast";
-      #   greedy = true;
-      # }
       {
         name = "radio-silence";
         greedy = true;
