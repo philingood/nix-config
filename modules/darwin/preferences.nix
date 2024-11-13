@@ -22,7 +22,6 @@ _: {
       AppleShowAllExtensions = true;
       FXEnableExtensionChangeWarning = false;
       QuitMenuItem = true;
-      _FXShowPosixPathInTitle = true;
       # Use list view in all Finder windows by default
       FXPreferredViewStyle = "Nlsv";
       ShowPathbar = true;
@@ -63,31 +62,10 @@ _: {
       launchanim = false;
       static-only = false;
       showhidden = true;
-      show-recents = false;
       show-process-indicators = true;
       orientation = "bottom";
       mru-spaces = false;
-      # Hot corners
-      # Possible values:
-      #  0: no-op
-      #  2: Mission Control
-      #  3: Show application windows
-      #  4: Desktop
-      #  5: Start screen saver
-      #  6: Disable screen saver
-      #  7: Dashboard
-      # 10: Put display to sleep
-      # 11: Launchpad
-      # 12: Notification Center
-      # 13: Lock Screen
-      # mouse in top right corner will (5) start screensaver
-      wvous-tr-corner = 5;
     };
-
-    # universalaccess = {
-    # get rid of extra transparency in menu bar and elsewhere
-    # reduceTransparency = false;
-    # };
 
     NSGlobalDomain = {
       # 2 = heavy font smoothing; if text looks blurry, back this down to 1
@@ -108,8 +86,8 @@ _: {
       # enable full keyboard control
       # (e.g. enable Tab in modal dialogs)
       AppleKeyboardUIMode = 3;
-      AppleTemperatureUnit = "Fahrenheit";
-      AppleMeasurementUnits = "Inches";
+      AppleTemperatureUnit = "Celsius";
+      AppleMeasurementUnits = "Meters";
       # no popup menus when holding down letters
       ApplePressAndHoldEnabled = false;
       # delay before repeating keystrokes
@@ -118,11 +96,11 @@ _: {
       KeyRepeat = 1;
       AppleShowScrollBars = "Automatic";
       NSScrollAnimationEnabled = true; # smooth scrolling
-      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       # no automatic smart quotes
-      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = true;
       NSAutomaticSpellingCorrectionEnabled = false;
       NSNavPanelExpandedStateForSaveMode = true;
       NSNavPanelExpandedStateForSaveMode2 = true;
@@ -183,7 +161,7 @@ _: {
         askForPasswordDelay = 0;
       };
       "com.apple.screencapture" = {
-        location = "~/Desktop";
+        location = "~/Pictures/Screenshots";
         type = "png";
       };
       "com.apple.Safari" = {
@@ -240,54 +218,6 @@ _: {
         # Automatically quit printer app once the print jobs complete
         "Quit When Finished" = true;
       };
-      # Note: this will merge (I hope) with the saved and modified plist with the shortcuts
-      "com.amethyst.Amethyst" = {
-        "enables-layout-hud" = true;
-        "enables-layout-hud-on-space-change" = false;
-        "smart-window-margins" = true;
-        "float-small-windows" = true;
-        SUEnableAutomaticChecks = false;
-        SUSendProfileInfo = false;
-        floating = [
-          {
-            id = "com.raycase.macos";
-            "window-titles" = [];
-          }
-          {
-            id = "com.apple.systempreferences";
-            "window-titles" = [];
-          }
-          {
-            id = "com.kapeli.dashdoc";
-            "window-titles" = [];
-          }
-          {
-            id = "com.markmcguill.strongbox.mac";
-            "window-titles" = [];
-          }
-          {
-            id = "com.yubico.yubioath";
-            "window-titles" = [];
-          }
-        ];
-        "window-resize-step" = 5;
-        "window-margins" = 1;
-        "window-margin-size" = 5;
-        # TODO: Amethyst uses binary blobs for keyboard shortcuts. How to capture here? And defaults read truncates...
-        "mouse-follows-focus" = false;
-        "mouse-resizes-windows" = true;
-        "follow-space-thrown-windows" = true;
-        layouts = [
-          "widescreen-tall"
-          "wide"
-          "tall"
-          "row"
-          "column"
-          "fullscreen"
-          "bsp"
-          "floating"
-        ];
-      };
       "com.apple.SoftwareUpdate" = {
         AutomaticCheckEnabled = true;
         # Check for software updates daily, not just once per week
@@ -295,7 +225,7 @@ _: {
         # Going to cover my bases and add this a second time in a second place directly in the activation script
         ScheduleFrequency = 1;
         # Download newly available updates in background
-        AutomaticDownload = 1;
+        AutomaticDownload = 0;
         # Install System data files & security updates
         CriticalUpdateInstall = 1;
       };
@@ -381,22 +311,6 @@ _: {
         showGettingStartedLink = 0;
         "store_termsAccepted" = 1;
         suggestedPreferredGoogleBrowser = 1;
-      };
-      "com.stclairsoft.DefaultFolderX5" = {
-        SUEnableAutomaticChecks = 0;
-        askedToLaunchAtLogin = 1;
-        askedToRemoveV4 = 1;
-        currentSet = "Default Set";
-        finderClickDesktop = 1;
-        openInFrontFinderWindow = 0;
-        showDrawer = 0;
-        showDrawerButton = 1;
-        showMenuButton = 1;
-        showStatusItem = 0;
-        toolbarShowAttributesOnOpen = 1;
-        toolbarShowAttributesOnSave = 1;
-        transferredOldUsageData = 1;
-        welcomeShown = 1;
       };
     };
   };
