@@ -221,7 +221,6 @@
 
     masApps = {
       "Apple Configurator 2" = 1037126344;
-      "Blurred" = 1497527363; # dim non-foreground windows
       "DeTeXt" = 1531906207;
       "Enchanted LLM" = 6474268307;
       "Mattermost Desktop" = 1614666244;
@@ -229,7 +228,7 @@
       "Microsoft Excel" = 462058435;
       "Microsoft Word" = 462054704;
       "Microsoft PowerPoint" = 462062816;
-      "Monodraw" = 920404675; # ASCII drawings
+      #"Monodraw" = 920404675; # ASCII drawings
       "ServerCat - SSH Terminal" = 1501532023;
       "Velja" = 1607635845;
       "Vimari" = 1480933944;
