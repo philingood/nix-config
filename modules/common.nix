@@ -10,7 +10,7 @@
     enableBashCompletion = true;
   };
 
-  # environment setup
+  ## environment setup
   environment = {
     systemPackages = [pkgs.cachix];
     etc = {
@@ -21,9 +21,9 @@
         then "${inputs.nixpkgs-stable-darwin}"
         else "${inputs.nixpkgs-stable}";
     };
-    # list of acceptable shells in /etc/shells
-    shells = with pkgs.stable; [bash zsh];
-    pathsToLink = ["/libexec" "/share/zsh"];
+    ## list of acceptable shells in /etc/shells
+    # shells = with pkgs.stable; [bash zsh];
+    # pathsToLink = ["/libexec" "/share/zsh"];
   };
 
   # Fixes error about home dir being /var/empty

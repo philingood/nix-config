@@ -9,15 +9,16 @@ let
   defaultPkgs =
     (with pkgs; [
       # filesystem
-      fd
-      ripgrep
-      dust
-      fzy
       curl
       duf # df alternative showing free disk space
+      dust
+      eza
+      fd
       fswatch
-      tree
+      fzy
+      ripgrep
       rsync
+      tree
 
       # compression
       atool
@@ -58,6 +59,7 @@ let
       # misc
       btop
       brotli
+      lazygit
       neofetch # display key software/version info in term
       vimv # shell script to bulk rename
       vulnix # check for live nix apps that are listed in NVD

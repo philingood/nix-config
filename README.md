@@ -11,7 +11,7 @@ softwareupdate --install-rosetta --agree-to-license
 ### Build
 
 ```bash
-nix --extra build .#darwinConfigurations.HackerBook.system
+nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.HackerBook.system
 ```
 
 ```bash

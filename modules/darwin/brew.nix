@@ -114,7 +114,7 @@
         name = "mactex-no-gui";
         greedy = true;
       }
-      "metasploit" # TODO 2024-07-31 nix version not running on mac
+      # "metasploit" # TODO 2024-07-31 nix version not running on mac
       {
         name = "mathpix-snipping-tool";
         greedy = true;
@@ -177,10 +177,10 @@
         greedy = true;
       }
       "swiftdefaultappsprefpane"
-      {
-        name = "syncthing"; # TODO: move to home-manager
-        greedy = true;
-      }
+      # {
+      #   name = "syncthing"; # TODO: move to home-manager
+      #   greedy = true;
+      # }
       {
         name = "telegram";
         greedy = true;
@@ -243,7 +243,7 @@
       "ca-certificates"
       "chkrootkit" # TODO: moved here 2024-03-25 since nix version is broken
       "choose-gui"
-      "ciphey"
+      # "ciphey"
       "ddcctl"
       "ical-buddy"
       "recon-ng" # TODO nix version doesn't work on mac at last try 2024-07-31
