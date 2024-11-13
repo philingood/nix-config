@@ -6,6 +6,7 @@
 
 ```bash
 softwareupdate --install-rosetta --agree-to-license
+xcode-select --install
 ```
 
 ### Build
