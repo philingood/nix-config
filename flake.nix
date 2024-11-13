@@ -76,7 +76,7 @@
    in {
       darwinConfigurations =
         let
-          username = "user";
+          username = "hacker";
         in
         {
           HackerBook = darwin.lib.darwinSystem {
