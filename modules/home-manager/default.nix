@@ -306,6 +306,7 @@ in
     plugins = with pkgs.vimPlugins; [
       idris-vim
       sensible
+      surround
       vim-airline
       The_NERD_tree # file system explorer
       fugitive vim-gitgutter # git 
@@ -313,6 +314,7 @@ in
       vim-abolish
       command-t
       vim-go
+      vim-nix
     ];
   };
 

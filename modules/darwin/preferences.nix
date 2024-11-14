@@ -19,11 +19,16 @@ _: {
       AppleShowAllExtensions = true;
       FXEnableExtensionChangeWarning = false;
       QuitMenuItem = true;
-      # Use list view in all Finder windows by default
-      FXPreferredViewStyle = "Nlsv";
+      # Use column view in all Finder windows by default
+      FXPreferredViewStyle = "clmv";
+      NewWindowTarget = "Home";
       ShowPathbar = true;
       ShowStatusBar = true;
+      _FXSortFoldersFirst = true;
     };
+
+    hitoolbox.AppleFnUsageType = "Change Input Source";
+    menuExtraClock.IsAnalog = true;
 
     trackpad = {
       ActuationStrength = 0; # silent clicking = 0, default = 1
@@ -54,6 +59,9 @@ _: {
       show-process-indicators = true;
       orientation = "bottom";
       mru-spaces = false;
+      persistent-apps = [
+        "/System/Library/CoreServices/Finder.app"
+      ];
     };
 
     NSGlobalDomain = {
@@ -63,7 +71,7 @@ _: {
       AppleInterfaceStyle = "Dark"; # Dark mode
       AppleInterfaceStyleSwitchesAutomatically = false; # auto switch light/dark
       "com.apple.sound.beep.feedback" = 1;
-      "com.apple.sound.beep.volume" = 0.406531;
+      "com.apple.sound.beep.volume" = 4723665; # 25%
       "com.apple.mouse.tapBehavior" = 1; # tap to click
       "com.apple.swipescrolldirection" = true; # "natural" scrolling
       "com.apple.keyboard.fnState" = false;
@@ -75,6 +83,7 @@ _: {
       AppleKeyboardUIMode = 3;
       AppleTemperatureUnit = "Celsius";
       AppleMeasurementUnits = "Centimeters";
+      AppleMetricUnits = 1;
       ApplePressAndHoldEnabled = false; # no popup menus when holding down letters
       InitialKeyRepeat = 14; # delay before repeating keystrokes
       KeyRepeat = 1; # delay between repeated keystrokes upon holding a key
@@ -92,6 +101,20 @@ _: {
       PMPrintingExpandedStateForPrint = true;
       PMPrintingExpandedStateForPrint2 = true;
     };
+
+    # Stage Manager
+    WindowManager = {
+      AppWindowGroupingBehavior = false;
+      AutoHide = true;
+      EnableStandardClickToShowDesktop = false; # only in SM
+    };
+
+    controlcenter = {
+      # 18 - show in menu bar, 24 - hide
+      NowPlaying = 24;
+      Sound = 24;
+    };
+
     CustomUserPreferences = {
       NSGlobalDomain = {
         # Add a context menu item for showing the Web Inspector in web views
@@ -181,5 +204,9 @@ _: {
         ignoreAreasWithoutScrollBars = 0;
       };
     };
+  };
+  system.keyboard = {
+    nonUS.remapTilde = true;
+    remapCapsLockToEscape = true;
   };
 }
