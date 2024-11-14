@@ -8,10 +8,10 @@ set expandtab
 set smartindent
 set nocompatible
 
-colorscheme rosepine
+colorscheme habamax
 
 let mapleader = " "
-nnoremap <leader>e :Vex<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>f :Files<CR>
 
