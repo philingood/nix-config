@@ -60,6 +60,7 @@ let
       ## dev
       lazygit
       devenv
+      nvim
 
       ## misc
       btop
@@ -259,6 +260,9 @@ in
         ll = "eza --icons --git-ignore --git -F --extended -l";
         lt = "eza --icons --git-ignore --git -F -T";
         llt = "eza --icons --git-ignore --git -F -l -T";
+
+        v="$EDITOR";
+        lg="lazygit";
 
         o="yazi";
         oicdl="yazi $CLOUDDOWNLOADS";
