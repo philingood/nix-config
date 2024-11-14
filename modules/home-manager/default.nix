@@ -48,7 +48,7 @@ let
       mdcat # colorize markdown
       html2text
 
-      # network
+      ## network
       gping
       bandwhich # bandwidth monitor by process
       static-web-server # serve local static files
@@ -58,6 +58,7 @@ let
       xh # rust version of httpie / better curl
 
       ## dev
+      lazydocker
       lazygit
       devenv
       neovim
@@ -252,7 +253,7 @@ in
         zec="$EDITOR +/sessionVariables ~/nix-config/modules/home-manager/default.nix";
         vc="$EDITOR +'/programs.vim =' ~/nix-config/modules/home-manager/default.nix";
         brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
-        np="$EDITOR +'/defaultPkgs =' ~/nix-config/modules/darwin/brew.nix";
+        np="$EDITOR +'/defaultPkgs =' ~/nix-config/modules/home-manager/default.nix";
 
         c = "clear";
         ls = "ls --color=auto -F";
@@ -297,7 +298,7 @@ in
         #checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         # brew update should no longer be needed; and brew upgrade should just happen, I think, but I might need to specify greedy per package
         #dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
-        dsw = "darwin-rebuild switch --flake ~/nix-config/.#HackerBook";
+        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#HackerBook";
         #dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
