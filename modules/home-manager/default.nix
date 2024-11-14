@@ -413,7 +413,7 @@ in
       git_status.style = "blue";
       git_metrics.disabled = false;
       git_branch.style = "bright-black";
-      git_branch.format = "(bright-black)[$symbol$branch(:$remote_branch)]($style) ";
+      git_branch.format = "[  ](bright-black)[$symbol$branch(:$remote_branch)]($style) ";
       time.disabled = true;
       directory = {
         format = "(bright-black)[$path]($style)[$read_only]($read_only_style)";
