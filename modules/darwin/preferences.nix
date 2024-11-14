@@ -7,17 +7,14 @@ _: {
       # quarantine downloads until approved
       LSQuarantine = true;
     };
-    # login window settings
     loginwindow = {
-      # disable guest account
       GuestEnabled = false;
-      # show name instead of username
       SHOWFULLNAME = false;
-      # Disables the ability for a user to access the console by typing “>console” for a username at the login window.
+      # Disables the ability for a user to access the console by typing “>console” for a 
+      # username at the login window.
       DisableConsoleAccess = true;
     };
 
-    # file viewer settings
     finder = {
       AppleShowAllExtensions = true;
       FXEnableExtensionChangeWarning = false;
@@ -28,15 +25,11 @@ _: {
       ShowStatusBar = true;
     };
 
-    # trackpad settings
     trackpad = {
-      # silent clicking = 0, default = 1
-      ActuationStrength = 0;
-      # enable tap to click
-      Clicking = true;
-      Dragging = true; # tap and a half to drag
-      # three finger click and drag
-      TrackpadThreeFingerDrag = true;
+      ActuationStrength = 0; # silent clicking = 0, default = 1
+      Clicking = true; # enable tap to click
+      Dragging = false; # tap and a half to drag
+      TrackpadThreeFingerDrag = false; # three finger click and drag
     };
 
     # firewall settings
@@ -49,14 +42,10 @@ _: {
 
     spaces.spans-displays = false; # separate spaces on each display
 
-    # dock settings
     dock = {
-      # auto show and hide dock
-      autohide = true;
-      # remove delay for showing dock
-      autohide-delay = 0.0;
-      # how fast is the dock showing animation
-      autohide-time-modifier = 0.2;
+      autohide = true; # auto show and hide dock
+      autohide-delay = 0.0; # remove delay for showing dock
+      autohide-time-modifier = 0.2; # how fast is the dock showing animation
       expose-animation-duration = 0.2;
       tilesize = 48;
       launchanim = false;
@@ -71,61 +60,37 @@ _: {
       # 2 = heavy font smoothing; if text looks blurry, back this down to 1
       AppleFontSmoothing = 2;
       AppleShowAllExtensions = true;
-      # Dark mode
-      AppleInterfaceStyle = "Dark";
-      # auto switch between light/dark mode
-      AppleInterfaceStyleSwitchesAutomatically = false;
+      AppleInterfaceStyle = "Dark"; # Dark mode
+      AppleInterfaceStyleSwitchesAutomatically = false; # auto switch light/dark
       "com.apple.sound.beep.feedback" = 1;
-      "com.apple.sound.beep.volume" = 0.606531; # 50%
+      "com.apple.sound.beep.volume" = 0.406531;
       "com.apple.mouse.tapBehavior" = 1; # tap to click
       "com.apple.swipescrolldirection" = true; # "natural" scrolling
-      "com.apple.keyboard.fnState" = true;
+      "com.apple.keyboard.fnState" = false;
       "com.apple.springing.enabled" = false;
-      "com.apple.trackpad.scaling" = 3.0; # fast
+      "com.apple.trackpad.scaling" = 1.0;
       "com.apple.trackpad.enableSecondaryClick" = true;
       # enable full keyboard control
       # (e.g. enable Tab in modal dialogs)
       AppleKeyboardUIMode = 3;
       AppleTemperatureUnit = "Celsius";
       AppleMeasurementUnits = "Centimeters";
-      # no popup menus when holding down letters
-      ApplePressAndHoldEnabled = false;
-      # delay before repeating keystrokes
-      InitialKeyRepeat = 14;
-      # delay between repeated keystrokes upon holding a key
-      KeyRepeat = 1;
+      ApplePressAndHoldEnabled = false; # no popup menus when holding down letters
+      InitialKeyRepeat = 14; # delay before repeating keystrokes
+      KeyRepeat = 1; # delay between repeated keystrokes upon holding a key
       AppleShowScrollBars = "Automatic";
       NSScrollAnimationEnabled = true; # smooth scrolling
       NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
-      # no automatic smart quotes
-      NSAutomaticQuoteSubstitutionEnabled = true;
+      NSAutomaticQuoteSubstitutionEnabled = true; # no automatic smart quotes
       NSAutomaticSpellingCorrectionEnabled = false;
       NSNavPanelExpandedStateForSaveMode = true;
       NSNavPanelExpandedStateForSaveMode2 = true;
       NSDocumentSaveNewDocumentsToCloud = false;
-      # speed up animation on open/save boxes (default:0.2)
-      NSWindowResizeTime = 0.001;
+      NSWindowResizeTime = 0.001; # speed up animation on open/save boxes (default:0.2)
       PMPrintingExpandedStateForPrint = true;
       PMPrintingExpandedStateForPrint2 = true;
-    };
-    CustomSystemPreferences = {
-      #NSGlobalDomain = {
-      #NSUserKeyEquivalents = {
-      # @ is command
-      # ^ is control
-      # ~ is option
-      # $ is shift
-      # It seems this is the old place for putting global system shortcuts
-      # The new place is the inscrutable com.apple.symbolichotkeys
-      # which doesn't have nice syntax and uses numbers to represent operations
-      # Are those numbers consistent across OS versions? Who knows!
-      # Doing a `defaults read com.apple.symbolichotkeys` before and after changes
-      # and diffing them seems to be the best way to reverse engineer things
-      # and not a great option.
-      #};
-      #};
     };
     CustomUserPreferences = {
       NSGlobalDomain = {
@@ -195,7 +160,7 @@ _: {
       # Turn on app auto-update
       "com.apple.commerce".AutoUpdate = true;
       "mo.com.sleeplessmind.Wooshy" = {
-        "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":768,\"carbonKeyCode\":49}";
+        # "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":768,\"carbonKeyCode\":49}";
         SUEnableAutomaticChecks = 0;
         SUUpdateGroupIdentifier = 3425398139;
         allowCyclingThroughTargets = 1;
@@ -207,25 +172,6 @@ _: {
         inputTextSize = 20;
         searchIncludesTrafficLightButtons = 1;
       };
-      "mo.com.sleeplessmind.kindaVim" = {
-        "KeyboardShortcuts_enterNormalMode" = "{\"carbonModifiers\":4096,\"carbonKeyCode\":53}";
-        "NSStatusItem Preferred Position Item-0" = 6009;
-        SUEnableAutomaticChecks = 0;
-        SUUpdateGroupIdentifier = 790660886;
-        appsForWhichToEnforceElectron = "[\"com.superhuman.electron\"]";
-        appsForWhichToEnforceKeyboardStrategy = "[\"mo.com.sleeplessmind.Wooshy\"]";
-        appsForWhichToUseHybridMode = "[\"com.apple.Safari\"]";
-        appsToAdviseFor = "[\"com.apple.mail\"]";
-        appsToIgnore = "[\"io.alacritty\",\"com.microsoft.VSCode\",\"org.qt-project.Qt.QtWebEngineCore\"]";
-        charactersWindowContent = "move";
-        "com_apple_SwiftUI_Settings_selectedTabIndex" = 0;
-        enableCommandPassthrough = 1;
-        enableOptionPassthrough = 1;
-        enterNormalModeWith = "customShortcut";
-        hazeOverWindowNonFullScreenOpacity = "0.5173477564102564";
-        sendEscapeToMacOSWith = "commandEscape";
-        showCharactersWindow = 0;
-      };
       "mo.com.sleeplessmind.Scrolla" = {
         "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":4352,\"carbonKeyCode\":49}";
         "NSStatusItem Preferred Position Item-0" = 6276;
@@ -233,44 +179,6 @@ _: {
         SUUpdateGroupIdentifier = 3756402529;
         "com_apple_SwiftUI_Settings_selectedTabIndex" = 0;
         ignoreAreasWithoutScrollBars = 0;
-      };
-      "com.raycast.macos" = {
-        NSNavLastRootDirectory = "~/src/scripts/raycast";
-        "NSStatusItem Visible raycastIcon" = 0;
-        commandsPreferencesExpandedItemIds = [
-          "extension_noteplan-3__00cda425-a991-4e4e-8031-e5973b8b24f6"
-          "builtin_package_navigation"
-          "builtin_package_scriptCommands"
-          "builtin_package_floatingNotes"
-        ];
-        "emojiPicker_skinTone" = "mediumLight";
-        initialSpotlightHotkey = "Command-49";
-        navigationCommandStyleIdentifierKey = "legacy";
-        "onboarding_canShowActionPanelHint" = 0;
-        "onboarding_canShowBackNavigationHint" = 0;
-        "onboarding_completedTaskIdentifiers" = [
-          "startWalkthrough"
-          "calendar"
-          "setHotkeyAndAlias"
-          "snippets"
-          "quicklinks"
-          "installFirstExtension"
-          "floatingNotes"
-          "windowManagement"
-          "calculator"
-          "raycastShortcuts"
-          "openActionPanel"
-        ];
-        organizationsPreferencesTabVisited = 1;
-        popToRootTimeout = 60;
-        raycastAPIOptions = 8;
-        raycastGlobalHotkey = "Command-49";
-        raycastPreferredWindowMode = "default";
-        raycastShouldFollowSystemAppearance = 1;
-        raycastWindowPresentationMode = 1;
-        showGettingStartedLink = 0;
-        "store_termsAccepted" = 1;
-        suggestedPreferredGoogleBrowser = 1;
       };
     };
   };
