@@ -226,6 +226,11 @@ in
     sessionVariables = {
       ALL_PROXY = "127.0.0.1:2081";
       EDITOR = "vim";
+      ICLOUD_DIR='$HOME/Library/Mobile\ Documents/com~apple~CloudDocs';
+      DEV_DIR='$HOME/Developer';
+      ONEDRIVE_DIR='$HOME/OneDrive\ -\ wpt.medfordmemorial.org/';
+      CLOUDDOWNLOADS_DIR='$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads';
+      NEXTCLOUD_DIR='$HOME/Nextcloud';
     };
     plugins = [
       {
@@ -243,8 +248,10 @@ in
       {
         zc="$EDITOR +/programs.zsh ~/nix-config/modules/home-manager/default.nix";
         zac="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix";
-        vc="$EDITOR +/programs.vim.*= ~/nix-config/modules/home-manager/default.nix";
+        zec="$EDITOR +/sessionVariables ~/nix-config/modules/home-manager/default.nix";
+        vc="$EDITOR +'/programs.vim =' ~/nix-config/modules/home-manager/default.nix";
         brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
+
         c = "clear";
         ls = "ls --color=auto -F";
         l = "eza --icons --git-ignore --git -F";
@@ -252,17 +259,21 @@ in
         ll = "eza --icons --git-ignore --git -F --extended -l";
         lt = "eza --icons --git-ignore --git -F -T";
         llt = "eza --icons --git-ignore --git -F -l -T";
+
+        o="yazi";
+        oicdl="yazi $CLOUDDOWNLOADS";
+        odl="yazi ~/Downloads/";
+        oic="yazi $ICLOUD_DIR";
+        od="yazi $DEV_DIR";
+        onc="yazi $NEXTCLOUD_DIR";
+        o1d="yazi $ONEDRIVE_DIR";
+
         fd = "\\fd -H -t d"; # default search directories
         f = "\\fd -H"; # default search this dir for files ignoring .gitignore etc
         lf = "~/.config/lf/lfimg";
-        nixflakeupdate1 = "nix run github:vimjoyer/nix-update-input"; # does `nix flake lock --update-input` with relevant fuzzy complete. Though actually, our tab completion does the same
         qp = ''
           qutebrowser --temp-basedir --set content.private_browsing true --set colors.tabs.bar.bg "#552222" --config-py "$HOME/.config/qutebrowser/config.py" --qt-arg name "qp,qp"'';
-        calc = "kalker";
         df = "duf";
-        # search for a note and with ctrl-n, create it if not found
-        # add subdir as needed like "n meetings" or "n wiki"
-        n = "zk edit --interactive";
         ".." = "cd ..";
         "..." = "cd ../..";
         "...." = "cd ../../..";
