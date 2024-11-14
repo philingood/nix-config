@@ -246,6 +246,7 @@
       # "ciphey"
       "ddcctl"
       "ical-buddy"
+      "node"
       "recon-ng" # TODO nix version doesn't work on mac at last try 2024-07-31
       "whisper-cpp"
       "whisperkit-cli"
