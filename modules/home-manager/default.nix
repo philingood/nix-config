@@ -61,6 +61,7 @@ let
       lazydocker
       lazygit
       devenv
+      go
       onefetch
       neovim
 
