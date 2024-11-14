@@ -110,9 +110,8 @@ _: {
     };
 
     controlcenter = {
-      # 18 - show in menu bar, 24 - hide
-      NowPlaying = 24;
-      Sound = 24;
+      NowPlaying = false;
+      Sound = false;
     };
 
     CustomUserPreferences = {
