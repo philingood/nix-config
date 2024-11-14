@@ -242,7 +242,7 @@ in
     shellAliases =
       {
         zc="$EDITOR +/programs.zsh ~/nix-config/modules/home-manager/default.nix";
-        zc="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix";
+        zac="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix";
         vc="$EDITOR +/programs.vim ~/nix-config/modules/home-manager/default.nix";
         brc="$EDITOR +/cask ~/nix-config/modules/darwin/brew.nix";
         c = "clear";
