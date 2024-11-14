@@ -369,7 +369,7 @@ in
       format = pkgs.lib.concatStrings [
         #"$os"
         "$shell"
-        "$conda"
+        #"$conda"
         "$username"
         "$hostname"
         "$singularity"
