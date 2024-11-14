@@ -243,8 +243,8 @@ in
       {
         zc="$EDITOR +/programs.zsh ~/nix-config/modules/home-manager/default.nix";
         zac="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix";
-        vc="$EDITOR +/programs.vim ~/nix-config/modules/home-manager/default.nix";
-        brc="$EDITOR +/cask ~/nix-config/modules/darwin/brew.nix";
+        vc="$EDITOR +/programs.vim.*= ~/nix-config/modules/home-manager/default.nix";
+        brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
         c = "clear";
         ls = "ls --color=auto -F";
         l = "eza --icons --git-ignore --git -F";
@@ -301,23 +301,26 @@ in
   };
   programs.vim = {
     enable = true;
-    # extraConfig = builtins.readFile vim/vimrc;
+    extraConfig = builtins.readFile dotfiles/.vimrc;
     settings = {
        relativenumber = true;
        number = true;
     };
     plugins = with pkgs.vimPlugins; [
+      auto-pairs
+      command-t
       idris-vim
       sensible
       surround
-      vim-airline
       The_NERD_tree # file system explorer
       fugitive vim-gitgutter # git 
       #YouCompleteMe
       vim-abolish
-      command-t
+      vim-airline
+      vim-commentary
       vim-go
       vim-nix
+      vim-polyglot
     ];
   };
 
