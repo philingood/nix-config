@@ -226,11 +226,11 @@ in
     sessionVariables = {
       ALL_PROXY = "127.0.0.1:2081";
       EDITOR = "vim";
-      ICLOUD_DIR='$HOME/Library/Mobile\ Documents/com~apple~CloudDocs';
-      DEV_DIR='$HOME/Developer';
-      ONEDRIVE_DIR='$HOME/OneDrive\ -\ wpt.medfordmemorial.org/';
-      CLOUDDOWNLOADS_DIR='$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads';
-      NEXTCLOUD_DIR='$HOME/Nextcloud';
+      ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
+      DEV_DIR="$HOME/Developer";
+      ONEDRIVE_DIR="$HOME/OneDrive\ -\ wpt.medfordmemorial.org/";
+      CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
+      NEXTCLOUD_DIR="$HOME/Nextcloud";
     };
     plugins = [
       {
