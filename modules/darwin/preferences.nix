@@ -87,7 +87,7 @@ _: {
       # (e.g. enable Tab in modal dialogs)
       AppleKeyboardUIMode = 3;
       AppleTemperatureUnit = "Celsius";
-      AppleMeasurementUnits = "Meters";
+      AppleMeasurementUnits = "Centimeters";
       # no popup menus when holding down letters
       ApplePressAndHoldEnabled = false;
       # delay before repeating keystrokes
