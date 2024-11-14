@@ -367,8 +367,9 @@ in
     enableBashIntegration = true;
     settings = {
       format = pkgs.lib.concatStrings [
-        "$os"
+        #"$os"
         "$shell"
+        "$conda"
         "$username"
         "$hostname"
         "$singularity"
@@ -402,7 +403,7 @@ in
       gcloud.disabled = true;
       aws.disabled = true;
       os.disabled = false;
-      os.symbols.Macos = "";
+      #os.symbols.Macos = "";
       kubernetes = {
         disabled = false;
         context_aliases = {

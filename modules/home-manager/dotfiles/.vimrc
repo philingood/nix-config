@@ -12,8 +12,6 @@ colorscheme rosepine
 
 let mapleader = " "
 nnoremap <leader>e :Vex<CR>
-nnoremap <Leader><CR> :so ~/.vimrc<CR>
 nnoremap <Leader>pi :PlugInstall<CR>
-
 nnoremap <Leader>f :Files<CR>
 
