@@ -21,13 +21,13 @@ _: {
       QuitMenuItem = true;
       # Use column view in all Finder windows by default
       FXPreferredViewStyle = "clmv";
-      NewWindowTarget = "Home";
+      #NewWindowTarget = "Home"; #FIXME: does not exist error why?
       ShowPathbar = true;
       ShowStatusBar = true;
       _FXSortFoldersFirst = true;
     };
 
-    hitoolbox.AppleFnUsageType = "Change Input Source";
+    #hitoolbox.AppleFnUsageType = "Change Input Source"; #FIXME: does not exist error why?
     menuExtraClock.IsAnalog = true;
 
     trackpad = {
@@ -71,7 +71,7 @@ _: {
       AppleInterfaceStyle = "Dark"; # Dark mode
       AppleInterfaceStyleSwitchesAutomatically = false; # auto switch light/dark
       "com.apple.sound.beep.feedback" = 1;
-      "com.apple.sound.beep.volume" = 4723665; # 25%
+      "com.apple.sound.beep.volume" = 0.4723665; # 25%
       "com.apple.mouse.tapBehavior" = 1; # tap to click
       "com.apple.swipescrolldirection" = true; # "natural" scrolling
       "com.apple.keyboard.fnState" = false;
