@@ -58,6 +58,7 @@ let
       xh # rust version of httpie / better curl
 
       ## dev
+      cargo
       lazydocker
       lazygit
       devenv
