@@ -241,6 +241,10 @@ in
     ];
     shellAliases =
       {
+        zc="$EDITOR +/programs.zsh ~/nix-config/modules/home-manager/default.nix"
+        zc="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix"
+        vc="$EDITOR +/programs.vim ~/nix-config/modules/home-manager/default.nix"
+        brc="$EDITOR +/cask ~/nix-config/modules/darwin/brew.nix"
         c = "clear";
         ls = "ls --color=auto -F";
         l = "eza --icons --git-ignore --git -F";
@@ -272,7 +276,6 @@ in
         "syncm" = "rsync -avhzP --progress \"$HOME/Sync/Private/PW Projects/Magic/\" pwalsh@synology1.savannah-basilisk.ts.net:/volume1/video/Magic/";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-        tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)
         # for use in SwiftDefaultApps
         checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
