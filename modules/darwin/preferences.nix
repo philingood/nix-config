@@ -109,11 +109,6 @@ _: {
       EnableStandardClickToShowDesktop = false; # only in SM
     };
 
-    controlcenter = {
-      NowPlaying = false;
-      Sound = false;
-    };
-
     CustomUserPreferences = {
       NSGlobalDomain = {
         # Add a context menu item for showing the Web Inspector in web views
