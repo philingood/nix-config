@@ -8,7 +8,7 @@ set expandtab
 set smartindent
 set nocompatible
 
-colorscheme habamax
+colorscheme rosepine
 
 let mapleader = " "
 nnoremap <leader>e :Vex<CR>

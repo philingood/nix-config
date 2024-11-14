@@ -251,7 +251,7 @@ in
         zc="$EDITOR +/programs.zsh ~/nix-config/modules/home-manager/default.nix";
         zac="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix";
         zec="$EDITOR +/sessionVariables ~/nix-config/modules/home-manager/default.nix";
-        vc="$EDITOR +'/programs.vim =' ~/nix-config/modules/home-manager/default.nix";
+        vc="$EDITOR +300+/programs.vim ~/nix-config/modules/home-manager/default.nix";
         brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
         np="$EDITOR +'/defaultPkgs =' ~/nix-config/modules/home-manager/default.nix";
 
