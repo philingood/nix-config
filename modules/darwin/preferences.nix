@@ -59,9 +59,7 @@ _: {
       show-process-indicators = true;
       orientation = "bottom";
       mru-spaces = false;
-      persistent-apps = [
-        "/System/Library/CoreServices/Finder.app"
-      ];
+      persistent-apps = [];
     };
 
     NSGlobalDomain = {
