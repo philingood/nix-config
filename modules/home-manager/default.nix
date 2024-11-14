@@ -233,6 +233,7 @@ in
       ONEDRIVE_DIR="$HOME/OneDrive\ -\ wpt.medfordmemorial.org/";
       CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
       NEXTCLOUD_DIR="$HOME/Nextcloud";
+      PATH="/opt/miniconda3/bin:$PATH";
     };
     plugins = [
       {
@@ -361,8 +362,7 @@ in
   };
   programs.starship = {
     enable = true;
-    enableNushellIntegration =
-      false; # I've manually integrated because of bugs 2023-04-05
+    enableNushellIntegration = false; # I've manually integrated because of bugs 2023-04-05
     enableZshIntegration = true;
     enableBashIntegration = true;
     settings = {
@@ -399,10 +399,10 @@ in
         vicmd_symbol = "[❮](green)";
       };
       scan_timeout = 30;
-      add_newline = true;
+      add_newline = false;
       gcloud.disabled = true;
       aws.disabled = true;
-      os.disabled = false;
+      os.disabled = true;
       #os.symbols.Macos = "";
       kubernetes = {
         disabled = false;
@@ -413,17 +413,16 @@ in
       git_status.style = "blue";
       git_metrics.disabled = false;
       git_branch.style = "bright-black";
-      git_branch.format = "[  ](bright-black)[$symbol$branch(:$remote_branch)]($style) ";
+      git_branch.format = "(bright-black)[$symbol$branch(:$remote_branch)]($style) ";
       time.disabled = true;
       directory = {
-        format = "[    ](bright-black)[$path]($style)[$read_only]($read_only_style)";
+        format = "(bright-black)[$path]($style)[$read_only]($read_only_style)";
         truncation_length = 4;
         truncation_symbol = "…/";
         style = "bold blue"; # cyan
         truncate_to_repo = false;
       };
       directory.substitutions = {
-        Downloads = " ";
         Developer = "☭ ";
       };
       package.disabled = true;
