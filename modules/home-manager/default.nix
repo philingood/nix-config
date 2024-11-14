@@ -60,7 +60,7 @@ let
       ## dev
       lazygit
       devenv
-      nvim
+      neovim
 
       ## misc
       btop
@@ -252,6 +252,7 @@ in
         zec="$EDITOR +/sessionVariables ~/nix-config/modules/home-manager/default.nix";
         vc="$EDITOR +'/programs.vim =' ~/nix-config/modules/home-manager/default.nix";
         brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
+        np="$EDITOR +'/defaultPkgs =' ~/nix-config/modules/darwin/brew.nix";
 
         c = "clear";
         ls = "ls --color=auto -F";
