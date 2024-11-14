@@ -61,6 +61,7 @@ let
       lazydocker
       lazygit
       devenv
+      onefetch
       neovim
 
       ## misc
@@ -266,6 +267,9 @@ in
 
         v="$EDITOR";
         lg="lazygit";
+
+        nf="neofetch";
+        of="onefetch";
 
         o="yazi";
         oicdl="yazi $CLOUDDOWNLOADS";
