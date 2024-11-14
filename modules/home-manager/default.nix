@@ -322,11 +322,13 @@ in
     plugins = with pkgs.vimPlugins; [
       auto-pairs
       command-t
+      codeium-vim
       idris-vim
       sensible
       surround
       The_NERD_tree # file system explorer
       fugitive vim-gitgutter # git 
+      rose-pine
       #YouCompleteMe
       vim-abolish
       vim-airline
