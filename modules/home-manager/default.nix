@@ -48,7 +48,7 @@ let
       mdcat # colorize markdown
       html2text
 
-      # network
+      ## network
       gping
       bandwhich # bandwidth monitor by process
       static-web-server # serve local static files
@@ -58,8 +58,10 @@ let
       xh # rust version of httpie / better curl
 
       ## dev
+      lazydocker
       lazygit
       devenv
+      neovim
 
       ## misc
       btop
@@ -226,6 +228,12 @@ in
     sessionVariables = {
       ALL_PROXY = "127.0.0.1:2081";
       EDITOR = "vim";
+      ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
+      DEV_DIR="$HOME/Developer";
+      ONEDRIVE_DIR="$HOME/OneDrive\ -\ wpt.medfordmemorial.org/";
+      CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
+      NEXTCLOUD_DIR="$HOME/Nextcloud";
+      PATH="/opt/miniconda3/bin:$PATH";
     };
     plugins = [
       {
@@ -241,6 +249,13 @@ in
     ];
     shellAliases =
       {
+        zc="$EDITOR +/programs.zsh ~/nix-config/modules/home-manager/default.nix";
+        zac="$EDITOR +/shellAliases ~/nix-config/modules/home-manager/default.nix";
+        zec="$EDITOR +/sessionVariables ~/nix-config/modules/home-manager/default.nix";
+        vc="$EDITOR +300+/programs.vim ~/nix-config/modules/home-manager/default.nix";
+        brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
+        np="$EDITOR +'/defaultPkgs =' ~/nix-config/modules/home-manager/default.nix";
+
         c = "clear";
         ls = "ls --color=auto -F";
         l = "eza --icons --git-ignore --git -F";
@@ -248,17 +263,24 @@ in
         ll = "eza --icons --git-ignore --git -F --extended -l";
         lt = "eza --icons --git-ignore --git -F -T";
         llt = "eza --icons --git-ignore --git -F -l -T";
+
+        v="$EDITOR";
+        lg="lazygit";
+
+        o="yazi";
+        oicdl="yazi $CLOUDDOWNLOADS";
+        odl="yazi ~/Downloads/";
+        oic="yazi $ICLOUD_DIR";
+        od="yazi $DEV_DIR";
+        onc="yazi $NEXTCLOUD_DIR";
+        o1d="yazi $ONEDRIVE_DIR";
+
         fd = "\\fd -H -t d"; # default search directories
         f = "\\fd -H"; # default search this dir for files ignoring .gitignore etc
         lf = "~/.config/lf/lfimg";
-        nixflakeupdate1 = "nix run github:vimjoyer/nix-update-input"; # does `nix flake lock --update-input` with relevant fuzzy complete. Though actually, our tab completion does the same
         qp = ''
           qutebrowser --temp-basedir --set content.private_browsing true --set colors.tabs.bar.bg "#552222" --config-py "$HOME/.config/qutebrowser/config.py" --qt-arg name "qp,qp"'';
-        calc = "kalker";
         df = "duf";
-        # search for a note and with ctrl-n, create it if not found
-        # add subdir as needed like "n meetings" or "n wiki"
-        n = "zk edit --interactive";
         ".." = "cd ..";
         "..." = "cd ../..";
         "...." = "cd ../../..";
@@ -272,22 +294,17 @@ in
         "syncm" = "rsync -avhzP --progress \"$HOME/Sync/Private/PW Projects/Magic/\" pwalsh@synology1.savannah-basilisk.ts.net:/volume1/video/Magic/";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-        tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)
         # for use in SwiftDefaultApps
-        checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
-        # dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; /opt/homebrew/bin/brew update; popd ; dwswitch ; /opt/homebrew/bin/brew upgrade ; /opt/homebrew/bin/brew upgrade --cask --greedy; dwshowupdates; popd";
+        #checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         # brew update should no longer be needed; and brew upgrade should just happen, I think, but I might need to specify greedy per package
-        dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
-        # Cachix on my whole nix store is burning unnecessary bandwidth and time -- slowing things down rather than speeding up
-        # From now on will just use for select personal flakes and things
-        #dwswitch = "pushd ~; cachix watch-exec zmre darwin-rebuild -- switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
-        dwswx = "pushd ~; darwin-rebuild switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
-        dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
-        dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
+        #dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
+        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#HackerBook";
+        #dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
+        #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
-        dwshowupdates = ''
-          zsh -c "nix store diff-closures /nix/var/nix/profiles/system-*-link(om[2]) /nix/var/nix/profiles/system-*-link(om[1])"'';
+        #dwshowupdates = ''
+          #zsh -c "nix store diff-closures /nix/var/nix/profiles/system-*-link(om[2]) /nix/var/nix/profiles/system-*-link(om[1])"'';
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
         hmswitch = ''
@@ -298,21 +315,28 @@ in
   };
   programs.vim = {
     enable = true;
-    # extraConfig = builtins.readFile vim/vimrc;
+    extraConfig = builtins.readFile dotfiles/.vimrc;
     settings = {
        relativenumber = true;
        number = true;
     };
     plugins = with pkgs.vimPlugins; [
+      auto-pairs
+      command-t
+      codeium-vim
       idris-vim
       sensible
-      vim-airline
+      surround
       The_NERD_tree # file system explorer
       fugitive vim-gitgutter # git 
+      rose-pine
       #YouCompleteMe
       vim-abolish
-      command-t
+      vim-airline
+      vim-commentary
       vim-go
+      vim-nix
+      vim-polyglot
     ];
   };
 
@@ -338,14 +362,14 @@ in
   };
   programs.starship = {
     enable = true;
-    enableNushellIntegration =
-      false; # I've manually integrated because of bugs 2023-04-05
+    enableNushellIntegration = false; # I've manually integrated because of bugs 2023-04-05
     enableZshIntegration = true;
     enableBashIntegration = true;
     settings = {
       format = pkgs.lib.concatStrings [
-        "$os"
+        #"$os"
         "$shell"
+        #"$conda"
         "$username"
         "$hostname"
         "$singularity"
@@ -375,11 +399,11 @@ in
         vicmd_symbol = "[❮](green)";
       };
       scan_timeout = 30;
-      add_newline = true;
+      add_newline = false;
       gcloud.disabled = true;
       aws.disabled = true;
-      os.disabled = false;
-      os.symbols.Macos = "";
+      os.disabled = true;
+      #os.symbols.Macos = "";
       kubernetes = {
         disabled = false;
         context_aliases = {
@@ -389,17 +413,16 @@ in
       git_status.style = "blue";
       git_metrics.disabled = false;
       git_branch.style = "bright-black";
-      git_branch.format = "[  ](bright-black)[$symbol$branch(:$remote_branch)]($style) ";
+      git_branch.format = "[  ](bright-black)[$symbol$branch(:$remote_branch)]($style) ";
       time.disabled = true;
       directory = {
-        format = "[    ](bright-black)[$path]($style)[$read_only]($read_only_style)";
+        format = "(bright-black)[$path]($style)[$read_only]($read_only_style)";
         truncation_length = 4;
         truncation_symbol = "…/";
         style = "bold blue"; # cyan
         truncate_to_repo = false;
       };
       directory.substitutions = {
-        Downloads = " ";
         Developer = "☭ ";
       };
       package.disabled = true;

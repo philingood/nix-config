@@ -177,10 +177,10 @@
         greedy = true;
       }
       "swiftdefaultappsprefpane"
-      # {
-      #   name = "syncthing"; # TODO: move to home-manager
-      #   greedy = true;
-      # }
+      {
+        name = "syncthing"; # TODO: move to home-manager
+        greedy = true;
+      }
       {
         name = "telegram";
         greedy = true;
