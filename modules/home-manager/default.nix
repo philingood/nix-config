@@ -59,10 +59,11 @@ let
 
       ## dev
       cargo
+      devenv
       lazydocker
       lazygit
-      devenv
       go
+      ollama
       onefetch
       neovim
 
