@@ -66,6 +66,7 @@ let
       ollama
       onefetch
       neovim
+      python312Packages.conda
 
       ## misc
       btop
