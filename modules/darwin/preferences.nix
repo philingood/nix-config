@@ -74,7 +74,7 @@ _: {
       "com.apple.swipescrolldirection" = true; # "natural" scrolling
       "com.apple.keyboard.fnState" = false;
       "com.apple.springing.enabled" = false;
-      "com.apple.trackpad.scaling" = 1.0;
+      "com.apple.trackpad.scaling" = 0.8;
       "com.apple.trackpad.enableSecondaryClick" = true;
       # enable full keyboard control
       # (e.g. enable Tab in modal dialogs)
