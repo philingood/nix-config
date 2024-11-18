@@ -67,6 +67,7 @@ let
       onefetch
       neovim
       python312Packages.conda
+      tmux
 
       ## misc
       btop
