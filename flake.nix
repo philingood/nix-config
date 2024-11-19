@@ -91,7 +91,7 @@
                   enable = true;
 
                   # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-                  enableRosetta = false;
+                  enableRosetta = true;
 
                   # User owning the Homebrew prefix
                   user = username;
@@ -118,6 +118,16 @@
                 ./modules/home-manager
                 ./modules/home-manager/home-darwin.nix
               ])
+            ];
+          };
+          HackerMac = darwin.lib.darwinSystem {
+            system = "x86_64-darwin";
+            pkgs = import nixpkgs { system = "x86_64-darwin"; };
+            specialArgs = {
+              inherit inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
+            };
+            modules = [
+              ./modules/darwin/linux-builder.nix
             ];
           };
         };

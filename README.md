@@ -11,6 +11,13 @@ xcode-select --install
 
 ### Build
 
+> [!NOTE]
+> First installation
+>
+> ```bash
+> nix run nix-darwin -- --flake github:philingood/nix-config#darwinConfigurations.HackerBook.system
+> ```
+
 ```bash
 nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.HackerBook.system
 ```
