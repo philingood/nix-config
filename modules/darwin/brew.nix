@@ -228,7 +228,6 @@
       "Microsoft Excel" = 462058435;
       "Microsoft Word" = 462054704;
       "Microsoft PowerPoint" = 462062816;
-      #"Monodraw" = 920404675; # ASCII drawings
       "ServerCat - SSH Terminal" = 1501532023;
       "Velja" = 1607635845;
       "Vimari" = 1480933944;
@@ -241,19 +240,18 @@
       "at-spi2-core"
       "brightness"
       "ca-certificates"
-      "chkrootkit" # TODO: moved here 2024-03-25 since nix version is broken
+      "chkrootkit" # TODO moved here 2024-03-25 since nix version is broken
       "choose-gui"
-      # "ciphey"
       "ddcctl"
+      "hashcat" # the nix one only builds on linux
+      "helm"
+      "hydra" # the nix one only builds on linux
       "ical-buddy"
       "node"
+      "p0f" # the nix one only builds on linux
       "recon-ng" # TODO nix version doesn't work on mac at last try 2024-07-31
       "whisper-cpp"
       "whisperkit-cli"
-      # would rather load these as part of a security shell, but...
-      "hashcat" # the nix one only builds on linux
-      "hydra" # the nix one only builds on linux
-      "p0f" # the nix one only builds on linux
       "yt-dlp" # youtube downloader
     ];
   };

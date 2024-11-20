@@ -23,73 +23,75 @@ let
 
       # compression
       atool
-      unzip
       gzip
+      unzip
       xz
       zip
 
       # file viewers
-      less
-      page # like less, but uses nvim, which is handy for selecting out text and such
-      file
-      jq
-      lynx
-      sourceHighlight # for lf preview
+      exif
+      exiftool # used by lf
       ffmpeg-full.bin
       ffmpegthumbnailer # for lf preview
-      pandoc # for lf preview
-      imagemagick # for lf preview
-      highlight # code coloring in lf
-      poppler_utils # for pdf2text in lf
-      mediainfo # used by lf
-      exiftool # used by lf
-      exif
+      file
       glow # browse markdown dirs
-      mdcat # colorize markdown
+      highlight # code coloring in lf
       html2text
+      imagemagick # for lf preview
+      jq
+      less
+      lynx
+      mdcat # colorize markdown
+      mediainfo # used by lf
+      page # like less, but uses nvim, which is handy for selecting out text and such
+      pandoc # for lf preview
+      poppler_utils # for pdf2text in lf
+      sourceHighlight # for lf preview
 
       ## network
-      gping
-      bandwhich # bandwidth monitor by process
-      static-web-server # serve local static files
       aria # cli downloader
+      bandwhich # bandwidth monitor by process
+      gping
       hostname
+      static-web-server # serve local static files
       trippy # mtr alternative
       xh # rust version of httpie / better curl
 
       ## dev
       cargo
       devenv
+      go
+      helmfile
+      kubectl
       lazydocker
       lazygit
-      go
+      neovim
       ollama
       onefetch
-      neovim
       python312Packages.conda
       tmux
 
       ## misc
-      btop
-      brotli
-      neofetch # display key software/version info in term
-      vimv # shell script to bulk rename
-      vulnix # check for live nix apps that are listed in NVD
-      aspell # spell checker
-      kalker # cli calculator; alt. to bc and calc
-      rink # calculator for unit conversions
-      nix-tree # explore dependencies
       asciinema # terminal screencast
-      ctags
+      aspell # spell checker
+      brotli
+      btop
       catimg # ascii rendering of any image in terminal x-pltfrm
+      ctags
       fortune
+      gnugrep
       ipcalc
+      kalker # cli calculator; alt. to bc and calc
       kondo # free disk space by cleaning project build dirs
+      neofetch # display key software/version info in term
+      nix-tree # explore dependencies
       optipng
+      pastel # cli for color manipulation
       procps
       pstree
-      pastel # cli for color manipulation
-      gnugrep
+      rink # calculator for unit conversions
+      vimv # shell script to bulk rename
+      vulnix # check for live nix apps that are listed in NVD
     ]);
 
   networkPkgs = with pkgs; [ mtr iftop ];
