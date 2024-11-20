@@ -349,6 +349,15 @@ in
     ];
   };
 
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    extraConfig = builtins.readFile dotfiles/.tmux.conf;
+    plugins = with pkgs; [
+      tmuxPlugins.better-mouse-mode
+    ];
+  };
+
   # Nice shell history https://atuin.sh -- experimenting with this 2024-07-26
   programs.atuin = {
     enable = true;
