@@ -36,8 +36,6 @@
     homebrew-bundle.flake = false;
     homebrew-services.url = "github:homebrew/homebrew-services";
     homebrew-services.flake = false;
-    homebrew-cask-drivers.url = "github:homebrew/homebrew-cask-drivers"; # for flipper zero
-    homebrew-cask-drivers.flake = false;
   };
   outputs =
     inputs@{ self
