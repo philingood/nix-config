@@ -127,6 +127,7 @@
               inherit inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
             };
             modules = [
+              ./modules/darwin/core.nix
               ./modules/darwin/linux-builder.nix
             ];
           };

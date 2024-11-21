@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  nix.linuxBuilder.enable = true;
+  nix.linux-builder.enable = true;
 }
 
