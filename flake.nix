@@ -48,7 +48,7 @@
     , nixos-hardware
     , nix-homebrew
     , ...
-    }: let 
+    }: let
     mkPkgs = system:
       import nixpkgs {
         inherit system;
@@ -89,14 +89,10 @@
                 nix-homebrew = {
                   # Install Homebrew under the default prefix
                   enable = true;
-
                   # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
                   enableRosetta = true;
-
                   # User owning the Homebrew prefix
                   user = username;
-
-                  # Declarative tap management
                   taps = with inputs; {
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
@@ -104,11 +100,8 @@
                     "homebrew/homebrew-services" = homebrew-services;
                     "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
                   };
-
                   # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
                   mutableTaps = false;
-
-                  # should only need this once...
                   autoMigrate = false;
                 };
               }
