@@ -98,7 +98,6 @@
                     "homebrew/homebrew-cask" = homebrew-cask;
                     "homebrew/homebrew-bundle" = homebrew-bundle;
                     "homebrew/homebrew-services" = homebrew-services;
-                    "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
                   };
                   # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
                   mutableTaps = false;

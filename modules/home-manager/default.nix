@@ -65,6 +65,7 @@ let
       kubectl
       lazydocker
       lazygit
+      neovide
       neovim
       ollama
       onefetch
