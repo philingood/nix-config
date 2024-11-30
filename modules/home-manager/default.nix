@@ -81,6 +81,7 @@ let
       ctags
       fortune
       gnugrep
+      htop
       ipcalc
       kalker # cli calculator; alt. to bc and calc
       kondo # free disk space by cleaning project build dirs
