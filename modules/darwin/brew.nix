@@ -200,7 +200,7 @@
         name = "transmission";
         greedy = true;
       }
-      # "$HOME/nix-config/modules/darwin/vscode.rb" # FIXME: this doesn't work. I want to use specific version of vscode.
+      # "$HOME/nix-config/modules/darwin/vscode.rb" # FIXME: this doesn't work. I want to use specific version of vscode. See https://code.visualstudio.com/docs/supporting/faq#_previous-release-versions
       {
         name = "whisky";
         greedy = true;
