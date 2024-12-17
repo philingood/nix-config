@@ -19,6 +19,7 @@ let
       ripgrep
       rsync
       tree
+      wget
       yazi
 
       # compression
@@ -61,7 +62,9 @@ let
       cargo
       devenv
       go
+      grpcurl
       helmfile
+      just
       kubectl
       lazydocker
       lazygit
