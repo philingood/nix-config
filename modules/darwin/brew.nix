@@ -200,10 +200,7 @@
         name = "transmission";
         greedy = true;
       }
-      {
-        name = "visual-studio-code";
-        greedy = true;
-      }
+      # "$HOME/nix-config/modules/darwin/vscode.rb" # FIXME: this doesn't work. I want to use specific version of vscode.
       {
         name = "whisky";
         greedy = true;
