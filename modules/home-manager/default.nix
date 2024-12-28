@@ -61,6 +61,7 @@ let
       ## dev
       cargo
       devenv
+      glab
       go
       grpcurl
       helmfile
@@ -73,6 +74,7 @@ let
       ollama
       onefetch
       python312Packages.conda
+      tldr
       tmux
 
       ## misc

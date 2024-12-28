@@ -172,6 +172,7 @@
         name = "raycast";
         greedy = true;
       }
+      # "simpletex" # Failed to download
       {
         name = "stolendata-mpv";
         greedy = true;
