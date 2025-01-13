@@ -164,6 +164,7 @@
       }
       "qlstephen"
       "qlvideo"
+      "qt-creator"
       {
         name = "radio-silence";
         greedy = true;
@@ -173,6 +174,7 @@
         greedy = true;
       }
       # "simpletex" # Failed to download
+      "skim"
       {
         name = "stolendata-mpv";
         greedy = true;
@@ -245,8 +247,10 @@
       "helm"
       "hydra" # the nix one only builds on linux
       "ical-buddy"
+      "latexindent"
       "node"
       "p0f" # the nix one only builds on linux
+      "qt"
       "recon-ng" # TODO nix version doesn't work on mac at last try 2024-07-31
       "whisper-cpp"
       "whisperkit-cli"
