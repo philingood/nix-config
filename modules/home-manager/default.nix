@@ -15,6 +15,7 @@ let
       eza
       fd
       fswatch
+      fzf
       fzy
       ripgrep
       rsync
@@ -48,6 +49,7 @@ let
       pandoc # for lf preview
       poppler_utils # for pdf2text in lf
       sourceHighlight # for lf preview
+      zathura
 
       ## network
       aria # cli downloader
@@ -245,7 +247,6 @@ in
       EDITOR = "vim";
       ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
       DEV_DIR="$HOME/Developer";
-      ONEDRIVE_DIR="$HOME/OneDrive\ -\ wpt.medfordmemorial.org/";
       CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
       NEXTCLOUD_DIR="$HOME/Nextcloud";
       PATH="/opt/miniconda3/bin:$PATH";
@@ -269,6 +270,7 @@ in
         zec="$EDITOR +/sessionVariables ~/nix-config/modules/home-manager/default.nix";
         vc="$EDITOR +300+/programs.vim ~/nix-config/modules/home-manager/default.nix";
         brc="$EDITOR +/casks ~/nix-config/modules/darwin/brew.nix";
+        brf="$EDITOR +/brews ~/nix-config/modules/darwin/brew.nix";
         np="$EDITOR +'/defaultPkgs =' ~/nix-config/modules/home-manager/default.nix";
 
         c = "clear";
@@ -279,7 +281,7 @@ in
         lt = "eza --icons --git-ignore --git -F -T";
         llt = "eza --icons --git-ignore --git -F -l -T";
 
-        v="$EDITOR";
+        v="nvim";
         lg="lazygit";
 
         nf="neofetch";
