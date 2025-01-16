@@ -1,7 +1,4 @@
 {
-  inputs,
-  config,
-  pkgs,
   ...
 }: {
   homebrew = {
@@ -232,6 +229,7 @@
       "Velja" = 1607635845;
       "Vimari" = 1480933944;
       "WireGuard" = 1451685025;
+      "Xcode" = "497799835";
     };
     brews = [
       "adwaita-icon-theme"

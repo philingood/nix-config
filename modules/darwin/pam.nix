@@ -10,6 +10,7 @@ with lib;
 # BUT... they didn't add the pam_reattach stuff, which means it doesn't work in tmux, which
 # means I need to keep this in place until someone makes it better. So changing the name
 # to avoid conflicts.
+# FIXME: NOT WORKS ON MY BOOK
   let
     cfg = config.security.pam;
     mkSudoTouchIdAuthScript = isEnabled: let
