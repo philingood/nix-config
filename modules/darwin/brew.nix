@@ -5,13 +5,13 @@
     enable = true;
     caskArgs.no_quarantine = true;
     onActivation = {
-      autoUpdate = false;
+      autoUpdate = true;
       upgrade = true;
       cleanup = "uninstall"; # should maybe be "zap" - remove anything not listed here
     };
     global = {
       brewfile = true;
-      autoUpdate = false;
+      autoUpdate = true;
     };
 
     taps = [
@@ -66,6 +66,10 @@
         greedy = true;
       }
       "freetube" # trying out private youtube browsing after reading about how toxic their algo is
+      {
+        name = "ghostty";
+        greedy = true;
+      }
       {
         name = "github";
         greedy = true;
@@ -211,9 +215,10 @@
       }
 
       # Keeping the next three together as they act in concert and are made by the same guy
-      "kindavim" # ctrl-esc allows you to control an input area as if in vim normal mode
-      "scrolla" # use vim commands to select scroll areas and scroll
-      "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
+      # FIXME: This is PAY TO PLAY. So i need an ultimate solution!
+      # "kindavim" # ctrl-esc allows you to control an input area as if in vim normal mode
+      # "scrolla" # use vim commands to select scroll areas and scroll
+      # "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
     ];
 
     masApps = {
@@ -229,7 +234,7 @@
       "Velja" = 1607635845;
       "Vimari" = 1480933944;
       "WireGuard" = 1451685025;
-      "Xcode" = "497799835";
+      "Xcode" = 497799835;
     };
     brews = [
       "adwaita-icon-theme"
