@@ -203,8 +203,8 @@ in
 
   programs.fzf = {
     enable = true;
-    enableZshIntegration = false;
-    tmux.enableShellIntegration = false;
+    enableZshIntegration = true;
+    tmux.enableShellIntegration = true;
     defaultCommand = "\fd --type f --hidden --exclude .git";
     fileWidgetCommand = "\fd --exclude .git --type f"; # for when ctrl-t is pressed
     changeDirWidgetCommand = "\fd --type d --hidden --follow --max-depth 3 --exclude .git";
@@ -250,6 +250,7 @@ in
       CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
       NEXTCLOUD_DIR="$HOME/Nextcloud";
       PATH="/opt/miniconda3/bin:$PATH";
+      CONDA_ENVS_PATH="$HOME/.conda/envs";
     };
     plugins = [
       {
@@ -297,9 +298,6 @@ in
 
         fd = "\\fd -H -t d"; # default search directories
         f = "\\fd -H"; # default search this dir for files ignoring .gitignore etc
-        lf = "~/.config/lf/lfimg";
-        qp = ''
-          qutebrowser --temp-basedir --set content.private_browsing true --set colors.tabs.bar.bg "#552222" --config-py "$HOME/.config/qutebrowser/config.py" --qt-arg name "qp,qp"'';
         df = "duf";
         ".." = "cd ..";
         "..." = "cd ../..";
@@ -311,7 +309,6 @@ in
         "yt" = "yt-dlp -f 'bv*+ba/b' --remux-video mp4 --embed-subs --write-auto-sub --embed-thumbnail --write-subs --sub-langs 'en.*,en-orig,en' --embed-chapters --sponsorblock-mark default --sponsorblock-remove default --no-prefer-free-formats --check-formats --embed-metadata --cookies-from-browser brave --user-agent 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'";
         "yt-fix" = "convert_vid_to_h264";
         "yt-fix-curdir" = "convert_v9_vids_to_h264";
-        "syncm" = "rsync -avhzP --progress \"$HOME/Sync/Private/PW Projects/Magic/\" pwalsh@synology1.savannah-basilisk.ts.net:/volume1/video/Magic/";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)
@@ -340,6 +337,7 @@ in
        relativenumber = true;
        number = true;
     };
+    # colorschemes.rose-pine.enable = true;
     plugins = with pkgs.vimPlugins; [
       auto-pairs
       command-t
@@ -349,7 +347,7 @@ in
       surround
       The_NERD_tree # file system explorer
       fugitive vim-gitgutter # git 
-      rose-pine
+      # rose-pine # FIXME: Not works ?
       #YouCompleteMe
       vim-abolish
       vim-airline
@@ -360,15 +358,15 @@ in
     ];
   };
 
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    extraConfig = builtins.readFile dotfiles/.tmux.conf;
-    plugins = with pkgs; [
-      tmuxPlugins.better-mouse-mode
-    ];
-  };
-
+  # programs.tmux = {
+  #   enable = true;
+  #   clock24 = true;
+  #   extraConfig = builtins.readFile dotfiles/.tmux.conf;
+  #   plugins = with pkgs; [
+  #     tmuxPlugins.better-mouse-mode
+  #   ];
+  # };
+  #
   # Nice shell history https://atuin.sh -- experimenting with this 2024-07-26
   programs.atuin = {
     enable = true;

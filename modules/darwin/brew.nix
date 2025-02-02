@@ -66,10 +66,10 @@
         greedy = true;
       }
       "freetube" # trying out private youtube browsing after reading about how toxic their algo is
-      {
-        name = "ghostty";
-        greedy = true;
-      }
+      # {
+      #   name = "ghostty"; # FIXME: not loading. how to update homebrew?
+      #   greedy = true;
+      # }
       {
         name = "github";
         greedy = true;
@@ -92,6 +92,10 @@
       }
       {
         name = "iterm2";
+        greedy = true;
+      }
+      {
+        name = "karabiner-elements";
         greedy = true;
       }
       {
@@ -243,21 +247,21 @@
       "at-spi2-core"
       "brightness"
       "ca-certificates"
-      "chkrootkit" # TODO moved here 2024-03-25 since nix version is broken
+      "chkrootkit"
       "choose-gui"
       "ddcctl"
-      "hashcat" # the nix one only builds on linux
+      "hashcat"
       "helm"
-      "hydra" # the nix one only builds on linux
+      "hydra"
       "ical-buddy"
       "latexindent"
       "node"
-      "p0f" # the nix one only builds on linux
+      "p0f"
       "qt"
-      "recon-ng" # TODO nix version doesn't work on mac at last try 2024-07-31
+      "recon-ng"
       "whisper-cpp"
       "whisperkit-cli"
-      "yt-dlp" # youtube downloader
+      "yt-dlp"
     ];
   };
 }
