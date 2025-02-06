@@ -19,9 +19,8 @@ _: {
       AppleShowAllExtensions = true;
       FXEnableExtensionChangeWarning = false;
       QuitMenuItem = true;
-      # Use column view in all Finder windows by default
-      FXPreferredViewStyle = "clmv";
-      #NewWindowTarget = "Home"; #FIXME: does not exist error why?
+      FXPreferredViewStyle = "clmv";  # Use column view in all Finder windows by default
+      #NewWindowTarget = "Home";  #FIXME: does not exist error why?
       ShowPathbar = true;
       ShowStatusBar = true;
       _FXSortFoldersFirst = true;
@@ -63,38 +62,36 @@ _: {
     };
 
     NSGlobalDomain = {
+      "com.apple.keyboard.fnState" = false;
+      "com.apple.mouse.tapBehavior" = 1; # tap to click
+      "com.apple.sound.beep.feedback" = 0;
+      "com.apple.sound.beep.volume" = 0.4723665; # 25%
+      "com.apple.springing.enabled" = false;
+      "com.apple.swipescrolldirection" = true; # "natural" scrolling
+      "com.apple.trackpad.enableSecondaryClick" = true;
+      "com.apple.trackpad.scaling" = 0.8;
       # 2 = heavy font smoothing; if text looks blurry, back this down to 1
       AppleFontSmoothing = 2;
-      AppleShowAllExtensions = true;
       AppleInterfaceStyle = "Dark"; # Dark mode
       AppleInterfaceStyleSwitchesAutomatically = false; # auto switch light/dark
-      "com.apple.sound.beep.feedback" = 1;
-      "com.apple.sound.beep.volume" = 0.4723665; # 25%
-      "com.apple.mouse.tapBehavior" = 1; # tap to click
-      "com.apple.swipescrolldirection" = true; # "natural" scrolling
-      "com.apple.keyboard.fnState" = false;
-      "com.apple.springing.enabled" = false;
-      "com.apple.trackpad.scaling" = 0.8;
-      "com.apple.trackpad.enableSecondaryClick" = true;
-      # enable full keyboard control
-      # (e.g. enable Tab in modal dialogs)
       AppleKeyboardUIMode = 3;
-      AppleTemperatureUnit = "Celsius";
       AppleMeasurementUnits = "Centimeters";
       AppleMetricUnits = 1;
       ApplePressAndHoldEnabled = false; # no popup menus when holding down letters
+      AppleShowAllExtensions = true;
+      AppleShowScrollBars = "Automatic";
+      AppleTemperatureUnit = "Celsius";
       InitialKeyRepeat = 14; # delay before repeating keystrokes
       KeyRepeat = 1; # delay between repeated keystrokes upon holding a key
-      AppleShowScrollBars = "Automatic";
-      NSScrollAnimationEnabled = true; # smooth scrolling
       NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = true; # no automatic smart quotes
       NSAutomaticSpellingCorrectionEnabled = false;
+      NSDocumentSaveNewDocumentsToCloud = false;
       NSNavPanelExpandedStateForSaveMode = true;
       NSNavPanelExpandedStateForSaveMode2 = true;
-      NSDocumentSaveNewDocumentsToCloud = false;
+      NSScrollAnimationEnabled = true; # smooth scrolling
       NSWindowResizeTime = 0.001; # speed up animation on open/save boxes (default:0.2)
       PMPrintingExpandedStateForPrint = true;
       PMPrintingExpandedStateForPrint2 = true;
@@ -116,18 +113,20 @@ _: {
         "com.apple.sound.beep.flash" = false;
       };
       "com.apple.finder" = {
-        OpenWindowForNewRemovableDisk = true;
-        ShowExternalHardDrivesOnDesktop = true;
-        ShowHardDrivesOnDesktop = true;
-        ShowMountedServersOnDesktop = true;
-        ShowRemovableMediaOnDesktop = true;
-        _FXSortFoldersFirst = true;
+        AppleShowAllExtensions = true;
+        CreateDocumentsFolder = false;
+        General = true;
+        OpenWith = true;
+        Privileges = true;
         # When performing a search, search the current folder by default
         FXDefaultSearchScope = "SCcf";
         FXInfoPanesExpanded = {
-          General = true;
-          OpenWith = true;
-          Privileges = true;
+          OpenWindowForNewRemovableDisk = true;
+          ShowExternalHardDrivesOnDesktop = false;
+          ShowHardDrivesOnDesktop = false;
+          ShowMountedServersOnDesktop = false;
+          ShowRemovableMediaOnDesktop = false;
+          _FXSortFoldersFirst = true;
         };
       };
       "com.apple.desktopservices" = {
