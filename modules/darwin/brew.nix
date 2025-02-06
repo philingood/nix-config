@@ -62,6 +62,10 @@
       }
       #"docker" # removed in favor of colima + docker cli
       {
+        name = "balenaetcher";  # tool for make bootable usb drives
+        greedy = true;
+      }
+      {
         name = "firefox@developer-edition";
         greedy = true;
       }
