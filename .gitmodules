@@ -1,0 +1,3 @@
+[submodule "modules/home-manager/dotfiles"]
+	path = modules/home-manager/dotfiles
+	url = https://github.com/philingood/dotfiles.git
