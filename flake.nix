@@ -5,7 +5,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     ## TODO: not sure if it matters, but probably worth threading -darwin version through on darwin builds
     nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # defaulting to unstable these days
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # defaulting to unstable these days
 
     flake-compat = {
       # Needed along with default.nix in root to allow nixd lsp to do completions
@@ -13,29 +13,49 @@
       url = "github:inclyc/flake-compat";
       flake = false;
     };
-    darwin.url = "github:lnl7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nps.url = "github:OleMussmann/Nix-Package-Search"; # use nps to quick search packages - requires gnugrep though
-    nps.inputs.nixpkgs.follows = "nixpkgs";
+    nps = {
+      url = "github:OleMussmann/Nix-Package-Search"; # use nps to quick search packages - requires gnugrep though
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
-    #nix-homebrew.inputs.brew-src.follows = "brew-src";
-    nix-homebrew.inputs.nix-darwin.follows = "darwin";
-    # Declarative, pinned homebrew tap management
-    homebrew-core.url = "github:homebrew/homebrew-core";
-    homebrew-core.flake = false;
-    homebrew-cask.url = "github:homebrew/homebrew-cask";
-    homebrew-cask.flake = false;
-    homebrew-bundle.url = "github:homebrew/homebrew-bundle";
-    homebrew-bundle.flake = false;
-    homebrew-services.url = "github:homebrew/homebrew-services";
-    homebrew-services.flake = false;
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-darwin.follows = "darwin";
+      #inputs.brew-src.follows = "brew-src";
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-services = {
+      url = "github:homebrew/homebrew-services";
+      flake = false;
+    };
+
+    secrets = {
+      url = "git+ssh://git@github.com/philingood/nix-private.git";
+      flake = false;
+    };
   };
   outputs =
     inputs@{ self
