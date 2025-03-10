@@ -197,11 +197,15 @@
         name = "telegram";
         greedy = true;
       }
-      "the-unarchiver"
-      "topaz-photo-ai"
-      "topaz-video-ai"
       {
-        name = "tor-browser"; # TODO: move to home-manager (tor-browser-bundle-bin) when it builds
+        name = "termius";
+        greedy = true;
+      }
+      "the-unarchiver"
+      #"topaz-photo-ai"
+      #"topaz-video-ai"
+      {
+        name = "tor-browser";
         greedy = true;
       }
       {
@@ -235,9 +239,9 @@
       "Enchanted LLM" = 6474268307;
       "Mattermost Desktop" = 1614666244;
       "Windows app" = 1295203466;
-      "Microsoft Excel" = 462058435;
-      "Microsoft Word" = 462054704;
-      "Microsoft PowerPoint" = 462062816;
+      #"Microsoft Excel" = 462058435;
+      #"Microsoft Word" = 462054704;
+      #"Microsoft PowerPoint" = 462062816;
       "ServerCat - SSH Terminal" = 1501532023;
       "Velja" = 1607635845;
       "Vimari" = 1480933944;
@@ -247,6 +251,7 @@
     brews = [
       "adwaita-icon-theme"
       "aom"
+      "ansible"
       "aribb24"
       "at-spi2-core"
       "brightness"
