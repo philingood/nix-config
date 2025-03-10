@@ -213,7 +213,7 @@ in
     enable = true;
     compression = true;
     controlMaster = "auto";
-    includes = [ "*.conf" ];
+    includes = [ "./sync/*.conf" ];
     extraConfig = ''
       AddKeysToAgent yes
     '';
@@ -243,7 +243,7 @@ in
     defaultKeymap = "viins";
     # things to add to .zshenv
     sessionVariables = {
-      ALL_PROXY = "127.0.0.1:2081";
+      ALL_PROXY = "http://127.0.0.1:2081";
       EDITOR = "vim";
       ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
       DEV_DIR="$HOME/Developer";
