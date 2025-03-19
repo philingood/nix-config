@@ -70,10 +70,10 @@
         greedy = true;
       }
       "freetube" # trying out private youtube browsing after reading about how toxic their algo is
-      # {
-      #   name = "ghostty"; # FIXME: not loading. how to update homebrew?
-      #   greedy = true;
-      # }
+      {
+        name = "ghostty";
+        greedy = true;
+      }
       {
         name = "github";
         greedy = true;
@@ -123,7 +123,6 @@
         name = "mactex-no-gui";
         greedy = true;
       }
-      # "metasploit" # TODO 2024-07-31 nix version not running on mac
       {
         name = "mathpix-snipping-tool";
         greedy = true;
@@ -173,15 +172,12 @@
       }
       "qlstephen"
       "qlvideo"
-      "qt-creator"
+      # "qt-creator"
       {
         name = "radio-silence";
         greedy = true;
       }
-      {
-        name = "raycast";
-        greedy = true;
-      }
+      "raycast"
       # "simpletex" # Failed to download
       "skim"
       {
