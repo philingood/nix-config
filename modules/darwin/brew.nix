@@ -248,6 +248,7 @@
       "adwaita-icon-theme"
       "aom"
       "ansible"
+      "sshpass"
       "aribb24"
       "at-spi2-core"
       "brightness"
