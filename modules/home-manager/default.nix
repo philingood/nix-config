@@ -131,8 +131,7 @@ in
   home.stateVersion = "20.09";
   home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
 
-  home.file =
-    {
+  home.file = {
       ".inputrc".text = ''
         set show-all-if-ambiguous on
         set completion-ignore-case on
@@ -176,7 +175,6 @@ in
         set editing-mode vi
       '';
     };
-
   programs.bat = {
     enable = true;
     #extraPackages = with pkgs.bat-extras; [ batman batgrep ];
@@ -200,7 +198,6 @@ in
     enableZshIntegration = true;
     enableNushellIntegration = false;
   };
-
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -223,7 +220,6 @@ in
     package = pkgs.gh;
     settings = { git_protocol = "ssh"; };
   };
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -244,12 +240,13 @@ in
     # things to add to .zshenv
     sessionVariables = {
       ALL_PROXY = "http://127.0.0.1:2081";
-      EDITOR = "vim";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
       ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
       DEV_DIR="$HOME/Developer";
       CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
       NEXTCLOUD_DIR="$HOME/Nextcloud";
-      PATH="/opt/miniconda3/bin:$PATH";
+      PATH="/opt/miniconda3/bin:$HOME/bin:$PATH";
       CONDA_ENVS_PATH="$HOME/.conda/envs";
     };
     plugins = [
@@ -316,7 +313,7 @@ in
         #checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         # brew update should no longer be needed; and brew upgrade should just happen, I think, but I might need to specify greedy per package
         #dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
-        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#HackerBook";
+        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#$(hostname -s)";
         #dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
@@ -357,17 +354,14 @@ in
       vim-polyglot
     ];
   };
-
-  # programs.tmux = {
-  #   enable = true;
-  #   clock24 = true;
-  #   extraConfig = builtins.readFile dotfiles/.tmux.conf;
-  #   plugins = with pkgs; [
-  #     tmuxPlugins.better-mouse-mode
-  #   ];
-  # };
-  #
-  # Nice shell history https://atuin.sh -- experimenting with this 2024-07-26
+  programs.tmux = {
+    enable = false;
+    clock24 = true;
+    extraConfig = builtins.readFile dotfiles/.tmux.conf;
+    plugins = with pkgs; [
+      tmuxPlugins.better-mouse-mode
+    ];
+  };
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
@@ -480,7 +474,6 @@ in
       };
     };
   };
-
   programs.alacritty = {
     enable = pkgs.stdenv.isLinux; # only install on Linux
     #package =
@@ -515,5 +508,4 @@ in
       ];
     };
   };
-
 }

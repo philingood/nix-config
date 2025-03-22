@@ -77,7 +77,7 @@
           username = "hacker";
         in
         {
-          HackerBook = darwin.lib.darwinSystem {
+          "9089" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
             pkgs = import nixpkgs { system = "aarch64-darwin"; };
             specialArgs = {
@@ -112,7 +112,7 @@
               ])
             ];
           };
-          HackerMac = darwin.lib.darwinSystem {
+          "9099" = darwin.lib.darwinSystem {
             system = "x86_64-darwin";
             pkgs = import nixpkgs { system = "x86_64-darwin"; };
             specialArgs = {

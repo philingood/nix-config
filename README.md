@@ -15,15 +15,15 @@ xcode-select --install
 > First installation
 >
 > ```bash
-> nix run nix-darwin -- --flake github:philingood/nix-config#darwinConfigurations.HackerBook.system
+> nix run nix-darwin -- --flake github:philingood/nix-config#darwinConfigurations.$(hostname -s).system
 > ```
 
 ```bash
-nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.HackerBook.system
+nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.$(hostname -s).system
 ```
 
 ```bash
-./result/sw/bin/darwin-rebuild switch --flake .#HackerBook
+./result/sw/bin/darwin-rebuild switch --flake .#$(hostname -s)
 ```
 
 ### Post

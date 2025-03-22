@@ -1,5 +1,4 @@
-{
-  ...
+{ ...
 }: {
   homebrew = {
     enable = true;
@@ -13,14 +12,12 @@
       brewfile = true;
       autoUpdate = true;
     };
-
     taps = [
       "homebrew/core"
       "homebrew/bundle"
       "homebrew/cask"
       "homebrew/services"
     ];
-
     casks = [
       {
         name = "alt-tab";
@@ -228,7 +225,6 @@
       # "scrolla" # use vim commands to select scroll areas and scroll
       # "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
     ];
-
     masApps = {
       "Apple Configurator 2" = 1037126344;
       "DeTeXt" = 1531906207;
