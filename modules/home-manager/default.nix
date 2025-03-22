@@ -132,7 +132,7 @@ in
   home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
 
   home.file = {
-      ".inputrc".text = ''
+    ".inputrc".text = ''
         set show-all-if-ambiguous on
         set completion-ignore-case on
         set mark-directories on
@@ -173,8 +173,10 @@ in
         # Go up a dir with ctrl-n
         "\C-n":"cd ..\n"
         set editing-mode vi
-      '';
-    };
+    '';
+    ".config/ghostty/config".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/home-manager/dotfiles/.config/ghostty/config";
+  };
   programs.bat = {
     enable = true;
     #extraPackages = with pkgs.bat-extras; [ batman batgrep ];
@@ -504,7 +506,7 @@ in
     };
   };
   programs.ghostty = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     settings = {
       theme = "rose-pine";
