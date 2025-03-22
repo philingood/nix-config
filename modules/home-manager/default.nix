@@ -325,7 +325,7 @@ in
   };
   programs.vim = {
     enable = true;
-    # extraConfig = builtins.readFile dotfiles/.vimrc; #FIXME: dir not found error
+    # extraConfig = builtins.readFile dotfiles/.vimrc; # FIXME: dir not found error
     settings = {
        relativenumber = true;
        number = true;
@@ -472,8 +472,7 @@ in
   };
   programs.alacritty = {
     enable = pkgs.stdenv.isLinux; # only install on Linux
-    #package =
-    #pkgs.alacritty; # switching to unstable so i get 0.11 with undercurl support
+    #package = pkgs.alacritty; # switching to unstable so i get 0.11 with undercurl support
     settings = {
       window.decorations = "full";
       window.dynamic_title = true;
@@ -502,6 +501,14 @@ in
           action = "ToggleViMode";
         }
       ];
+    };
+  };
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "rose-pine";
+      font-size = 14;
     };
   };
 }
