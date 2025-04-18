@@ -1,15 +1,19 @@
 # Nix config
 
-## Start
+## Setup
 
-### Pre
+### Nix
+
+### Darwin
+
+#### Pre
 
 ```bash
 softwareupdate --install-rosetta --agree-to-license
 xcode-select --install
 ```
 
-### Build
+#### Build
 
 > [!NOTE]
 > First installation
@@ -26,4 +30,4 @@ nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurati
 ./result/sw/bin/darwin-rebuild switch --flake .#$(hostname -s)
 ```
 
-### Post
+#### Post
