@@ -71,6 +71,7 @@ let
       kubectl
       lazydocker
       lazygit
+      libsecret
       neovide
       neovim
       ollama

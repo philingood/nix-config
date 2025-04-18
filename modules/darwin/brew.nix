@@ -44,6 +44,7 @@
         greedy = true;
       }
       "burp-suite" # TODO: move to home-manager? (burpsuite)
+      #"bitwarden" # Using mas vertion
       {
         name = "chatgpt";
         greedy = true;
@@ -227,6 +228,7 @@
     ];
     masApps = {
       "Apple Configurator 2" = 1037126344;
+      "bitwarden" = 1352778147;
       "DeTeXt" = 1531906207;
       "Enchanted LLM" = 6474268307;
       "Mattermost Desktop" = 1614666244;
