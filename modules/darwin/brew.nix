@@ -19,206 +19,71 @@
       "homebrew/services"
     ];
     casks = [
-      {
-        name = "alt-tab";
-        greedy = true;
-      }
-      {
-        name = "appcleaner";
-        greedy = true;
-      }
-      {
-        name = "arc";
-        greedy = true;
-      }
-      {
-        name = "audacity";
-        greedy = true;
-      }
-      {
-        name = "avidemux";
-        greedy = true;
-      }
-      {
-        name = "betterdisplay";
-        greedy = true;
-      }
+      "alt-tab"
+      "appcleaner"
+      "arc"
+      "audacity"
+      "avidemux"
+      "betterdisplay"
       "burp-suite" # TODO: move to home-manager? (burpsuite)
       #"bitwarden" # Using mas vertion
-      {
-        name = "chatgpt";
-        greedy = true;
-      }
+      "chatgpt"
       "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
-      {
-        name = "dbeaver-community";
-        greedy = true;
-      }
-      {
-        name = "discord";
-        greedy = true;
-      }
+      "dbeaver-community"
+      "discord"
       #"docker" # removed in favor of colima + docker cli
-      {
-        name = "balenaetcher";  # tool for make bootable usb drives
-        greedy = true;
-      }
-      {
-        name = "firefox@developer-edition";
-        greedy = true;
-      }
+      "balenaetcher"  # tool for make bootable usb drive
+      "firefox@developer-edition"
       "freetube" # trying out private youtube browsing after reading about how toxic their algo is
-      {
-        name = "ghostty";
-        greedy = true;
-      }
-      {
-        name = "github";
-        greedy = true;
-      }
-      {
-        name = "gpg-suite";
-        greedy = true;
-      }
-      {
-        name = "heroic";
-        greedy = true;
-      }
-      {
-        name = "httpie";
-        greedy = true;
-      }
-      {
-        name = "istat-menus";
-        greedy = false;
-      }
-      {
-        name = "iterm2";
-        greedy = true;
-      }
-      {
-        name = "karabiner-elements";
-        greedy = true;
-      }
-      {
-        name = "kitty";
-        greedy = true;
-      }
+      "ghostty"
+      "github"
+      "gpg-suite"
+      "heroic"
+      "httpie"
+      "istat-menus"
+      "iterm2"
+      "karabiner-elements"
+      "kitty"
       "keycastr"
-      {
-        name = "librewolf";
-        greedy = true;
-      }
-      {
-        name = "lm-studio";
-        greedy = true;
-      }
-      {
-        name = "macfuse";
-        greedy = true;
-      }
-      {
-        name = "mactex-no-gui";
-        greedy = true;
-      }
-      {
-        name = "mathpix-snipping-tool";
-        greedy = true;
-      }
+      "librewolf"
+      "lm-studio"
+      "macfuse"
+      "mactex-no-gui"
+      "mathpix-snipping-tool"
       "mpv"
-      {
-        name = "nextcloud";
-        greedy = true;
-      }
-      {
-        name = "ngrok";
-        greedy = true;
-      }
-      {
-        name = "ntfstool";
-        greedy = true;
-      }
-      {
-        name = "obs"; # TODO: move to nix version obs-studio when not broken
-        greedy = true;
-      }
-      {
-        name = "obsidian";
-        greedy = true;
-      }
-      {
-        name = "onyx";
-        greedy = true;
-      }
-      {
-        name = "openlens";
-        greedy = true;
-      }
-      {
-        name = "orbstack";
-        greedy = true;
-      }
-      {
-        name = "outline-manager";
-        greedy = true;
-      }
+      "nextcloud"
+      "ngrok"
+      "ntfstool"
+      "obs" # TODO: move to nix version obs-studio when not broke
+      "obsidian"
+      "onyx"
+      "openlens"
+      "orbstack"
+      "outline-manager"
       "qflipper"
       "qutebrowser" # TODO: move over when it builds on arm64 darwin
-      {
-        name = "qlmarkdown";
-        greedy = true;
-      }
+      "qlmarkdown"
       "qlstephen"
       "qlvideo"
       # "qt-creator"
-      {
-        name = "radio-silence";
-        greedy = true;
-      }
+      "radio-silence"
       "raycast"
       # "simpletex" # Failed to download
       "skim"
-      {
-        name = "stolendata-mpv";
-        greedy = true;
-      }
+      "stolendata-mpv"
       "swiftdefaultappsprefpane"
-      {
-        name = "syncthing"; # TODO: move to home-manager
-        greedy = true;
-      }
-      {
-        name = "telegram";
-        greedy = true;
-      }
-      {
-        name = "termius";
-        greedy = true;
-      }
+      "syncthing" # TODO: move to home-manager
+      "telegram"
+      "termius"
       "the-unarchiver"
       #"topaz-photo-ai"
       #"topaz-video-ai"
-      {
-        name = "tor-browser";
-        greedy = true;
-      }
-      {
-        name = "tradingview";
-        greedy = true;
-      }
-      {
-        name = "transmission";
-        greedy = true;
-      }
+      "tor-browser"
+      "tradingview"
+      "transmission"
       # "$HOME/nix-config/modules/darwin/vscode.rb" # FIXME: this doesn't work. I want to use specific version of vscode. See https://code.visualstudio.com/docs/supporting/faq#_previous-release-versions
-      {
-        name = "whisky";
-        greedy = true;
-      }
-      {
-        name = "yandex-music";
-        greedy = true;
-      }
+      "whisky"
+      "yandex-music"
 
       # Keeping the next three together as they act in concert and are made by the same guy
       # FIXME: This is PAY TO PLAY. So i need an ultimate solution!
