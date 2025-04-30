@@ -278,7 +278,7 @@ in
         lt = "eza --icons --git-ignore --git -F -T";
         llt = "eza --icons --git-ignore --git -F -l -T";
 
-        v="nvim";
+        v="$EDITOR";
         lg="lazygit";
 
         nf="neofetch";
@@ -291,6 +291,10 @@ in
         od="yazi $DEV_DIR";
         onc="yazi $NEXTCLOUD_DIR";
         o1d="yazi $ONEDRIVE_DIR";
+
+        k="kubectl";
+        kc="kubectl config use-context";
+        kn="kubectl config set-context --current --namespace";
 
         fd = "\\fd -H -t d"; # default search directories
         f = "\\fd -H"; # default search this dir for files ignoring .gitignore etc
