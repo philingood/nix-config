@@ -71,6 +71,7 @@ let
       kubectl
       lazydocker
       lazygit
+      libsecret
       neovide
       neovim
       ollama
@@ -131,9 +132,8 @@ in
   home.stateVersion = "20.09";
   home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
 
-  home.file =
-    {
-      ".inputrc".text = ''
+  home.file = {
+    ".inputrc".text = ''
         set show-all-if-ambiguous on
         set completion-ignore-case on
         set mark-directories on
@@ -174,9 +174,10 @@ in
         # Go up a dir with ctrl-n
         "\C-n":"cd ..\n"
         set editing-mode vi
-      '';
-    };
-
+    '';
+    ".config/ghostty/config".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/home-manager/dotfiles/.config/ghostty/config";
+  };
   programs.bat = {
     enable = true;
     #extraPackages = with pkgs.bat-extras; [ batman batgrep ];
@@ -200,7 +201,6 @@ in
     enableZshIntegration = true;
     enableNushellIntegration = false;
   };
-
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -213,7 +213,7 @@ in
     enable = true;
     compression = true;
     controlMaster = "auto";
-    includes = [ "*.conf" ];
+    includes = [ "./sync/*.conf" ];
     extraConfig = ''
       AddKeysToAgent yes
     '';
@@ -223,18 +223,13 @@ in
     package = pkgs.gh;
     settings = { git_protocol = "ssh"; };
   };
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     # let's the terminal track current working dir but only builds on linux
-    enableVteIntegration =
-      if pkgs.stdenvNoCC.isDarwin
-      then false
-      else true;
-
+    enableVteIntegration = if pkgs.stdenvNoCC.isDarwin then false else true;
     history = {
       expireDuplicatesFirst = true;
       ignoreSpace = true;
@@ -243,13 +238,14 @@ in
     defaultKeymap = "viins";
     # things to add to .zshenv
     sessionVariables = {
-      ALL_PROXY = "127.0.0.1:2081";
-      EDITOR = "vim";
+      ALL_PROXY = "http://127.0.0.1:2081";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
       ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
       DEV_DIR="$HOME/Developer";
       CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
       NEXTCLOUD_DIR="$HOME/Nextcloud";
-      PATH="/opt/miniconda3/bin:$PATH";
+      PATH="/opt/miniconda3/bin:$HOME/bin:$PATH";
       CONDA_ENVS_PATH="$HOME/.conda/envs";
     };
     plugins = [
@@ -282,7 +278,7 @@ in
         lt = "eza --icons --git-ignore --git -F -T";
         llt = "eza --icons --git-ignore --git -F -l -T";
 
-        v="nvim";
+        v="$EDITOR";
         lg="lazygit";
 
         nf="neofetch";
@@ -295,6 +291,10 @@ in
         od="yazi $DEV_DIR";
         onc="yazi $NEXTCLOUD_DIR";
         o1d="yazi $ONEDRIVE_DIR";
+
+        k="kubectl";
+        kc="kubectl config use-context";
+        kn="kubectl config set-context --current --namespace";
 
         fd = "\\fd -H -t d"; # default search directories
         f = "\\fd -H"; # default search this dir for files ignoring .gitignore etc
@@ -316,7 +316,7 @@ in
         #checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         # brew update should no longer be needed; and brew upgrade should just happen, I think, but I might need to specify greedy per package
         #dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
-        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#HackerBook";
+        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#$(hostname -s)";
         #dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
@@ -332,7 +332,7 @@ in
   };
   programs.vim = {
     enable = true;
-    extraConfig = builtins.readFile dotfiles/.vimrc;
+    extraConfig = builtins.readFile "${inputs.dotfiles.outPath}/.vimrc";
     settings = {
        relativenumber = true;
        number = true;
@@ -357,17 +357,14 @@ in
       vim-polyglot
     ];
   };
-
-  # programs.tmux = {
-  #   enable = true;
-  #   clock24 = true;
-  #   extraConfig = builtins.readFile dotfiles/.tmux.conf;
-  #   plugins = with pkgs; [
-  #     tmuxPlugins.better-mouse-mode
-  #   ];
-  # };
-  #
-  # Nice shell history https://atuin.sh -- experimenting with this 2024-07-26
+  programs.tmux = {
+    enable = false;
+    clock24 = true;
+    extraConfig = builtins.readFile dotfiles/.tmux.conf;
+    plugins = with pkgs; [
+      tmuxPlugins.better-mouse-mode
+    ];
+  };
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
@@ -480,11 +477,9 @@ in
       };
     };
   };
-
   programs.alacritty = {
     enable = pkgs.stdenv.isLinux; # only install on Linux
-    #package =
-    #pkgs.alacritty; # switching to unstable so i get 0.11 with undercurl support
+    #package = pkgs.alacritty; # switching to unstable so i get 0.11 with undercurl support
     settings = {
       window.decorations = "full";
       window.dynamic_title = true;
@@ -515,5 +510,12 @@ in
       ];
     };
   };
-
+  programs.ghostty = {
+    enable = false;
+    enableZshIntegration = true;
+    settings = {
+      theme = "rose-pine";
+      font-size = 14;
+    };
+  };
 }

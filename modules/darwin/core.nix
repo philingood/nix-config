@@ -6,7 +6,7 @@
 }: {
   # environment setup
   environment = {
-    loginShell = pkgs.zsh;
+    # loginShell = pkgs.zsh;
     pathsToLink = ["/Applications"];
     systemPath = ["/opt/homebrew/bin" "/opt/homebrew/sbin"];
     etc = {
@@ -16,7 +16,14 @@
     # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
 
     # packages installed in system profile
-    systemPackages = with pkgs; [git curl coreutils gnused pam-reattach zoxide];
+    systemPackages = with pkgs; [
+      git
+      curl
+      coreutils
+      gnused
+      pam-reattach
+      zoxide
+    ];
 
     # Fix "Too many open files" problems. Based on this:
     # https://medium.com/mindful-technology/too-many-open-files-limit-ulimit-on-mac-os-x-add0f1bfddde
@@ -123,32 +130,19 @@
   # documentation.man.generateCaches.enable = false;
   # documentation.nixos.enable = false;
 
-  # Just configure DNS for WiFi for now
-  # networking.knownNetworkServices = ["Wi-Fi"];
-  # networking.dns = ["8.8.8.8" "1.1.1.1"];
-  #networking.dns = [ "127.0.0.1" "1.1.1.1" ];
-  # So the nextdns installed by nix is not signed and apple refuses to run it.
-  # Switching to the version from the App store
-  # services.nextdns = {
-  #   enable = true;
-  #   arguments = [ "-config" "f73bff" ];
-  # };
+  networking.knownNetworkServices = [ "Wi-Fi" ];
+  networking.dns = [ "192.168.90.250" "10.0.30.2" "8.8.4.4" "1.1.1.1" ];
 
   fonts.packages = with pkgs; [
     # powerline-fonts
     # source-code-pro
     # roboto-slab
     # source-sans-pro
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "Meslo"
-        "SourceCodePro"
-        "Inconsolata"
-        "NerdFontsSymbolsOnly"
-      ];
-    })
     # montserrat
+    nerd-fonts.fira-code
+    nerd-fonts.meslo-lg
+    nerd-fonts.inconsolata-lgc
+    nerd-fonts.symbols-only
   ];
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}" "darwin=/etc/${config.environment.etc.darwin.target}"];
@@ -158,10 +152,10 @@
   };
 
   # auto manage nixbld users with nix darwin
-  nix.configureBuildUsers = true;
+  # nix.configureBuildUsers = true;
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # services.nix-daemon.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

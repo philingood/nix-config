@@ -1,5 +1,4 @@
-{
-  ...
+{ ...
 }: {
   homebrew = {
     enable = true;
@@ -13,214 +12,78 @@
       brewfile = true;
       autoUpdate = true;
     };
-
     taps = [
       "homebrew/core"
       "homebrew/bundle"
       "homebrew/cask"
       "homebrew/services"
     ];
-
     casks = [
-      {
-        name = "alt-tab";
-        greedy = true;
-      }
-      {
-        name = "appcleaner";
-        greedy = true;
-      }
-      {
-        name = "arc";
-        greedy = true;
-      }
-      {
-        name = "audacity";
-        greedy = true;
-      }
-      {
-        name = "avidemux";
-        greedy = true;
-      }
-      {
-        name = "betterdisplay";
-        greedy = true;
-      }
+      "alt-tab"
+      "appcleaner"
+      "arc"
+      "audacity"
+      "avidemux"
+      "betterdisplay"
       "burp-suite" # TODO: move to home-manager? (burpsuite)
-      {
-        name = "chatgpt";
-        greedy = true;
-      }
+      #"bitwarden" # Using mas vertion
+      "chatgpt"
       "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
-      {
-        name = "dbeaver-community";
-        greedy = true;
-      }
-      {
-        name = "discord";
-        greedy = true;
-      }
+      "dbeaver-community"
+      "discord"
       #"docker" # removed in favor of colima + docker cli
-      {
-        name = "balenaetcher";  # tool for make bootable usb drives
-        greedy = true;
-      }
-      {
-        name = "firefox@developer-edition";
-        greedy = true;
-      }
+      "balenaetcher"  # tool for make bootable usb drive
+      "firefox@developer-edition"
       "freetube" # trying out private youtube browsing after reading about how toxic their algo is
-      # {
-      #   name = "ghostty"; # FIXME: not loading. how to update homebrew?
-      #   greedy = true;
-      # }
-      {
-        name = "github";
-        greedy = true;
-      }
-      {
-        name = "gpg-suite";
-        greedy = true;
-      }
-      {
-        name = "heroic";
-        greedy = true;
-      }
-      {
-        name = "httpie";
-        greedy = true;
-      }
-      {
-        name = "istat-menus";
-        greedy = false;
-      }
-      {
-        name = "iterm2";
-        greedy = true;
-      }
-      {
-        name = "karabiner-elements";
-        greedy = true;
-      }
-      {
-        name = "kitty";
-        greedy = true;
-      }
+      "ghostty"
+      "github"
+      "gpg-suite"
+      "heroic"
+      "httpie"
+      "istat-menus"
+      "iterm2"
+      "karabiner-elements"
+      "kitty"
       "keycastr"
-      {
-        name = "librewolf";
-        greedy = true;
-      }
-      {
-        name = "lm-studio";
-        greedy = true;
-      }
-      {
-        name = "macfuse";
-        greedy = true;
-      }
-      {
-        name = "mactex-no-gui";
-        greedy = true;
-      }
-      # "metasploit" # TODO 2024-07-31 nix version not running on mac
-      {
-        name = "mathpix-snipping-tool";
-        greedy = true;
-      }
+      "librewolf"
+      "lm-studio"
+      "macfuse"
+      "mactex-no-gui"
+      "mathpix-snipping-tool"
       "mpv"
-      {
-        name = "nextcloud";
-        greedy = true;
-      }
-      {
-        name = "ngrok";
-        greedy = true;
-      }
-      {
-        name = "ntfstool";
-        greedy = true;
-      }
-      {
-        name = "obs"; # TODO: move to nix version obs-studio when not broken
-        greedy = true;
-      }
-      {
-        name = "obsidian";
-        greedy = true;
-      }
-      {
-        name = "onyx";
-        greedy = true;
-      }
-      {
-        name = "openlens";
-        greedy = true;
-      }
-      {
-        name = "orbstack";
-        greedy = true;
-      }
-      {
-        name = "outline-manager";
-        greedy = true;
-      }
+      "nextcloud"
+      "ngrok"
+      "ntfstool"
+      "obs" # TODO: move to nix version obs-studio when not broke
+      "obsidian"
+      "onyx"
+      "openlens"
+      "orbstack"
+      "outline-manager"
       "qflipper"
       "qutebrowser" # TODO: move over when it builds on arm64 darwin
-      {
-        name = "qlmarkdown";
-        greedy = true;
-      }
+      "qlmarkdown"
       "qlstephen"
       "qlvideo"
-      "qt-creator"
-      {
-        name = "radio-silence";
-        greedy = true;
-      }
-      {
-        name = "raycast";
-        greedy = true;
-      }
+      # "qt-creator"
+      "radio-silence"
+      "raycast"
       # "simpletex" # Failed to download
       "skim"
-      {
-        name = "stolendata-mpv";
-        greedy = true;
-      }
+      "stolendata-mpv"
       "swiftdefaultappsprefpane"
-      {
-        name = "syncthing"; # TODO: move to home-manager
-        greedy = true;
-      }
-      {
-        name = "telegram";
-        greedy = true;
-      }
+      "syncthing" # TODO: move to home-manager
+      "telegram"
+      "termius"
       "the-unarchiver"
-      "topaz-photo-ai"
-      "topaz-video-ai"
-      {
-        name = "tor-browser"; # TODO: move to home-manager (tor-browser-bundle-bin) when it builds
-        greedy = true;
-      }
-      {
-        name = "tradingview";
-        greedy = true;
-      }
-      {
-        name = "transmission";
-        greedy = true;
-      }
+      #"topaz-photo-ai"
+      #"topaz-video-ai"
+      "tor-browser"
+      "tradingview"
+      "transmission"
       # "$HOME/nix-config/modules/darwin/vscode.rb" # FIXME: this doesn't work. I want to use specific version of vscode. See https://code.visualstudio.com/docs/supporting/faq#_previous-release-versions
-      {
-        name = "whisky";
-        greedy = true;
-      }
-      {
-        name = "yandex-music";
-        greedy = true;
-      }
+      "whisky"
+      "yandex-music"
 
       # Keeping the next three together as they act in concert and are made by the same guy
       # FIXME: This is PAY TO PLAY. So i need an ultimate solution!
@@ -228,16 +91,16 @@
       # "scrolla" # use vim commands to select scroll areas and scroll
       # "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
     ];
-
     masApps = {
       "Apple Configurator 2" = 1037126344;
+      "bitwarden" = 1352778147;
       "DeTeXt" = 1531906207;
       "Enchanted LLM" = 6474268307;
       "Mattermost Desktop" = 1614666244;
       "Windows app" = 1295203466;
-      "Microsoft Excel" = 462058435;
-      "Microsoft Word" = 462054704;
-      "Microsoft PowerPoint" = 462062816;
+      #"Microsoft Excel" = 462058435;
+      #"Microsoft Word" = 462054704;
+      #"Microsoft PowerPoint" = 462062816;
       "ServerCat - SSH Terminal" = 1501532023;
       "Velja" = 1607635845;
       "Vimari" = 1480933944;
@@ -247,6 +110,8 @@
     brews = [
       "adwaita-icon-theme"
       "aom"
+      "ansible"
+      "sshpass"
       "aribb24"
       "at-spi2-core"
       "brightness"

@@ -51,9 +51,14 @@
       url = "github:homebrew/homebrew-services";
       flake = false;
     };
-
     secrets = {
       url = "git+ssh://git@github.com/philingood/nix-private.git";
+      flake = false;
+    };
+    dotfiles = {
+      type = "git";
+      url = "https://github.com/philingood/dotfiles.git";
+      submodules = true;
       flake = false;
     };
   };
@@ -97,7 +102,7 @@
           username = "hacker";
         in
         {
-          HackerBook = darwin.lib.darwinSystem {
+          "9089" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
             pkgs = import nixpkgs { system = "aarch64-darwin"; };
             specialArgs = {
@@ -132,7 +137,7 @@
               ])
             ];
           };
-          HackerMac = darwin.lib.darwinSystem {
+          "9099" = darwin.lib.darwinSystem {
             system = "x86_64-darwin";
             pkgs = import nixpkgs { system = "x86_64-darwin"; };
             specialArgs = {
