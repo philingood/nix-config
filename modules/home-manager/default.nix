@@ -105,17 +105,12 @@ let
     ]);
 
   networkPkgs = with pkgs; [ mtr iftop ];
-  guiPkgs =
-    [
-      # pkgs.element-desktop
-      #dbeaver # database sql manager with er diagrams
-    ]
-    ++ (lib.optionals pkgs.stdenv.isDarwin
-      [
-        pkgs.colima # command line docker server replacement
-        pkgs.docker
-        pkgs.utm
-      ]);
+  guiPkgs = [ ]
+  ++ (lib.optionals pkgs.stdenv.isDarwin [
+    pkgs.colima # command line docker server replacement
+    pkgs.docker
+    pkgs.utm
+  ]);
 in
 {
   programs.home-manager.enable = true;
@@ -358,9 +353,9 @@ in
     ];
   };
   programs.tmux = {
-    enable = false;
+    enable = true;
     clock24 = true;
-    extraConfig = builtins.readFile dotfiles/.tmux.conf;
+    extraConfig = builtins.readFile "${inputs.dotfiles.outPath}/.tmux.conf";
     plugins = with pkgs; [
       tmuxPlugins.better-mouse-mode
     ];
