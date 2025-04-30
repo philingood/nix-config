@@ -10,7 +10,7 @@
 
 ```bash
 softwareupdate --install-rosetta --agree-to-license
-xcode-select --install && cd && git clone --recurse-submodules https://github.com/philingood/nix-config.git
+xcode-select --install && cd && git clone https://github.com/philingood/nix-config.git
 ```
 
 #### Build
