@@ -36,6 +36,12 @@
     homebrew-bundle.flake = false;
     homebrew-services.url = "github:homebrew/homebrew-services";
     homebrew-services.flake = false;
+    dotfiles = {
+      type = "git";
+      url = "https://github.com/philingood/dotfiles.git";
+      submodules = true;
+      flake = false;
+    };
   };
   outputs =
     inputs@{ self

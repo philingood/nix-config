@@ -37,6 +37,24 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745440627,
+        "narHash": "sha256-x6ASd88D4r6CJmsvHYhql/TMLhCVBJmovrBNkmDTXe8=",
+        "ref": "refs/heads/master",
+        "rev": "b0f08f72dd2713a9aaaf4fab1cf33b30dbd776e1",
+        "revCount": 11,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/philingood/dotfiles.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/philingood/dotfiles.git"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -328,6 +346,7 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
+        "dotfiles": "dotfiles",
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",

@@ -328,7 +328,7 @@ in
   };
   programs.vim = {
     enable = true;
-    # extraConfig = builtins.readFile dotfiles/.vimrc; # FIXME: dir not found error
+    extraConfig = builtins.readFile "${inputs.dotfiles.outPath}/.vimrc";
     settings = {
        relativenumber = true;
        number = true;
