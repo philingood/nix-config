@@ -28,7 +28,7 @@
       "burp-suite" # TODO: move to home-manager? (burpsuite)
       #"bitwarden" # Using mas vertion
       "chatgpt"
-      "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
+      # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
       "dbeaver-community"
       "discord"
       #"docker" # removed in favor of colima + docker cli
