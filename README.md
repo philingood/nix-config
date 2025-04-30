@@ -31,3 +31,7 @@ nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurati
 ```
 
 #### Post
+
+```bash
+sudo xcodebuild -license accept
+```
