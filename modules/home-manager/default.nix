@@ -170,8 +170,8 @@ in
         "\C-n":"cd ..\n"
         set editing-mode vi
     '';
-    ".config/ghostty/config".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/home-manager/dotfiles/.config/ghostty/config";
+    ".config/ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/.config/ghostty/config";
+    ".config/karabiner/karabiner.json".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/.config/karabiner/karabiner.json";
   };
   programs.bat = {
     enable = true;
