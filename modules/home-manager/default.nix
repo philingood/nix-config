@@ -80,6 +80,9 @@ let
       tldr
       tmux
 
+      ## security
+      git-crypt
+
       ## misc
       asciinema # terminal screencast
       aspell # spell checker

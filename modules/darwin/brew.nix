@@ -27,6 +27,7 @@
       "betterdisplay"
       "burp-suite" # TODO: move to home-manager? (burpsuite)
       #"bitwarden" # Using mas vertion
+      "calibre"
       "chatgpt"
       # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
       "dbeaver-community"
@@ -39,9 +40,11 @@
       "github"
       "gpg-suite"
       "heroic"
+      "homerow"
       "httpie"
       "istat-menus"
       "iterm2"
+      "jellyfin-media-player"
       "karabiner-elements"
       "kitty"
       "keycastr"
@@ -92,20 +95,20 @@
       # "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
     ];
     masApps = {
-      "Apple Configurator 2" = 1037126344;
-      "bitwarden" = 1352778147;
-      "DeTeXt" = 1531906207;
-      "Enchanted LLM" = 6474268307;
-      "Mattermost Desktop" = 1614666244;
-      "Windows app" = 1295203466;
+      # "Apple Configurator 2" = 1037126344;
+      # "bitwarden" = 1352778147;
+      # "DeTeXt" = 1531906207;
+      # "Enchanted LLM" = 6474268307;
+      # "Mattermost Desktop" = 1614666244;
+      # "Windows app" = 1295203466;
       #"Microsoft Excel" = 462058435;
       #"Microsoft Word" = 462054704;
       #"Microsoft PowerPoint" = 462062816;
-      "ServerCat - SSH Terminal" = 1501532023;
-      "Velja" = 1607635845;
-      "Vimari" = 1480933944;
-      "WireGuard" = 1451685025;
-      "Xcode" = 497799835;
+      # "ServerCat - SSH Terminal" = 1501532023;
+      # "Velja" = 1607635845;
+      # "Vimari" = 1480933944;
+      # "WireGuard" = 1451685025;
+      # "Xcode" = 497799835;
     };
     brews = [
       "adwaita-icon-theme"
