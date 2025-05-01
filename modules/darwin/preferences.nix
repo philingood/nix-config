@@ -85,7 +85,7 @@ _: {
       KeyRepeat = 1; # delay between repeated keystrokes upon holding a key
       NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false;
-      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = true;
       NSAutomaticQuoteSubstitutionEnabled = true; # no automatic smart quotes
       NSAutomaticSpellingCorrectionEnabled = false;
       NSDocumentSaveNewDocumentsToCloud = false;
@@ -93,6 +93,7 @@ _: {
       NSNavPanelExpandedStateForSaveMode2 = true;
       NSScrollAnimationEnabled = true; # smooth scrolling
       NSWindowResizeTime = 0.001; # speed up animation on open/save boxes (default:0.2)
+      NSWindowShouldDragOnGesture = true; # Whether to enable moving window by holding anywhere on it like on Linux. The default is false.
       PMPrintingExpandedStateForPrint = true;
       PMPrintingExpandedStateForPrint2 = true;
     };
@@ -145,7 +146,7 @@ _: {
       };
       "com.apple.ActivityMonitor" = {
         OpenMainWindow = true;
-        IconType = 5; # visualize cpu in dock icon
+        IconType = 6; # visualize cpu history in dock icon
         ShowCategory = 0; # show all processes
         SortColumn = "CPUUsage";
         SortDirection = 0;
@@ -173,27 +174,6 @@ _: {
       "com.apple.ImageCapture".disableHotPlug = true;
       # Turn on app auto-update
       "com.apple.commerce".AutoUpdate = true;
-      "mo.com.sleeplessmind.Wooshy" = {
-        # "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":768,\"carbonKeyCode\":49}";
-        SUEnableAutomaticChecks = 0;
-        SUUpdateGroupIdentifier = 3425398139;
-        allowCyclingThroughTargets = 1;
-        "com_apple_SwiftUI_Settings_selectedTabIndex" = 4;
-        fuzzyMatchingFlavor = "wooshyClassic";
-        hazeOverWindowStyle = "fadeOutExceptDockMenuBarAndFrontmostApp";
-        inputPosition = "aboveWindow";
-        inputPreset = "custom";
-        inputTextSize = 20;
-        searchIncludesTrafficLightButtons = 1;
-      };
-      "mo.com.sleeplessmind.Scrolla" = {
-        "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":4352,\"carbonKeyCode\":49}";
-        "NSStatusItem Preferred Position Item-0" = 6276;
-        SUEnableAutomaticChecks = 0;
-        SUUpdateGroupIdentifier = 3756402529;
-        "com_apple_SwiftUI_Settings_selectedTabIndex" = 0;
-        ignoreAreasWithoutScrollBars = 0;
-      };
     };
   };
   system.keyboard = {
