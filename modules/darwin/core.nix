@@ -131,7 +131,7 @@
   # documentation.nixos.enable = false;
 
   networking.knownNetworkServices = [ "Wi-Fi" ];
-  networking.dns = [ "192.168.90.250" "10.0.30.2" "8.8.4.4" "1.1.1.1" ];
+  # networking.dns = [ "192.168.90.250" "10.0.30.2" "8.8.4.4" "1.1.1.1" ];
 
   fonts.packages = with pkgs; [
     # powerline-fonts
