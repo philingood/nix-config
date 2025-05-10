@@ -1,7 +1,6 @@
 { inputs
 , config
 , pkgs
-, username
 , lib
 , ...
 }:
@@ -66,7 +65,6 @@ let
       glab
       go
       grpcurl
-      helmfile
       just
       kubectl
       lazydocker
@@ -106,7 +104,6 @@ let
       vimv # shell script to bulk rename
       vulnix # check for live nix apps that are listed in NVD
     ]);
-
   networkPkgs = with pkgs; [ mtr iftop ];
   guiPkgs = [ ]
   ++ (lib.optionals pkgs.stdenv.isDarwin [
@@ -114,6 +111,18 @@ let
     pkgs.docker
     pkgs.utm
   ]);
+  my-kubernetes-helm = with pkgs; wrapHelm kubernetes-helm {
+    plugins = with pkgs.kubernetes-helmPlugins; [
+      helm-secrets
+      helm-diff
+      helm-s3
+      helm-git
+    ];
+  };
+  my-helmfile = pkgs.helmfile-wrapped.override {
+    inherit (my-kubernetes-helm) pluginsDir;
+  };
+  my-pkgs = [ my-helmfile my-kubernetes-helm ];
 in
 {
   programs.home-manager.enable = true;
@@ -128,7 +137,7 @@ in
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "20.09";
-  home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
+  home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs ++ my-pkgs;
 
   home.file = {
     ".inputrc".text = ''
