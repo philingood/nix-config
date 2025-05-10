@@ -42,6 +42,7 @@
       "heroic"
       "homerow"
       "httpie"
+      # "hugin" # does not work on apple silicon
       "istat-menus"
       "iterm2"
       "jellyfin-media-player"
@@ -131,6 +132,7 @@
       "p0f"
       "qt"
       "recon-ng"
+      "teleport"
       "whisper-cpp"
       "whisperkit-cli"
       "yt-dlp"
