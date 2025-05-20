@@ -30,6 +30,7 @@
       "calibre"
       "chatgpt"
       # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
+      "cursor"
       "dbeaver-community"
       "discord"
       #"docker" # removed in favor of colima + docker cli
