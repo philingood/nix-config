@@ -373,7 +373,7 @@ in
     ];
   };
   programs.atuin = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     flags = [ "--disable-up-arrow" ];
     settings = {
