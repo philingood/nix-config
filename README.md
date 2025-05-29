@@ -34,4 +34,5 @@ nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurati
 
 ```bash
 sudo xcodebuild -license accept
+nix-index
 ```
