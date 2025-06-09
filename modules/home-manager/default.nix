@@ -248,7 +248,7 @@ in
     defaultKeymap = "viins";
     # things to add to .zshenv
     sessionVariables = {
-      ALL_PROXY = "http://127.0.0.1:2081";
+      # ALL_PROXY = "http://127.0.0.1:2081";
       EDITOR = "nvim";
       VISUAL = "nvim";
       ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
