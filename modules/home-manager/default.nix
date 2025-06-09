@@ -290,6 +290,13 @@ in
 
         v="$EDITOR";
         lg="lazygit";
+        ld="lazydocker";
+
+        t="tmux";
+        ta="tmux attach";
+        tn="tmux new";
+        ts="tmux new -s";
+        tnn="tmux neww";
 
         nf="neofetch";
         of="onefetch";
