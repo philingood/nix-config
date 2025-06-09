@@ -215,8 +215,14 @@ in
     enable = true;
     enableZshIntegration = true;
     tmux.enableShellIntegration = true;
+    tmux.shellIntegrationOptions = [ "-d 94%" ];
     defaultCommand = "\fd --type f --hidden --exclude .git";
-    fileWidgetCommand = "\fd --exclude .git --type f"; # for when ctrl-t is pressed
+    fileWidgetCommand = "\fd --type f --hidden --exclude .git"; # for when ctrl-t is pressed
+    fileWidgetOptions = [
+      "--preview 'bat -n --color=always --line-range=:500 {}'"
+      "--tiebreak=begin,length"
+      "--bind=change:top"
+    ];
     changeDirWidgetCommand = "\fd --type d --hidden --follow --max-depth 3 --exclude .git";
   };
   programs.ssh = {
