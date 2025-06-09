@@ -40,6 +40,7 @@
       "ghostty"
       "github"
       "gpg-suite"
+      "hammerspoon"
       "heroic"
       "homerow"
       "httpie"
