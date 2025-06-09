@@ -67,9 +67,11 @@ let
       grpcurl
       just
       kubectl
+      kcat
       lazydocker
       lazygit
       libsecret
+      natscli
       neovide
       neovim
       ollama
