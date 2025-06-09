@@ -186,6 +186,7 @@ in
     '';
     ".config/ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/.config/ghostty/config";
     ".config/karabiner/karabiner.json".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/.config/karabiner/karabiner.json";
+    # "Library/Application Support/Cursor/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/Library/Application Support/Cursor/User/settings.json";
   };
   programs.bat = {
     enable = true;
