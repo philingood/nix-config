@@ -364,7 +364,7 @@ in
     plugins = with pkgs.vimPlugins; [
       auto-pairs
       command-t
-      codeium-vim
+      windsurf-vim
       idris-vim
       sensible
       surround
