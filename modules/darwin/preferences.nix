@@ -1,4 +1,5 @@
 _: {
+  system.primaryUser = "hacker";
   system.defaults = {
     #
     # `man configuration.nix` on mac is useful in seeing available options
