@@ -28,6 +28,7 @@
       "burp-suite" # TODO: move to home-manager? (burpsuite)
       #"bitwarden" # Using mas vertion
       "calibre"
+      "citrix-workspace"
       "chatgpt"
       # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
       "cursor"
