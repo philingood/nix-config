@@ -64,7 +64,7 @@
       "ntfstool"
       "obs" # TODO: move to nix version obs-studio when not broke
       "obsidian"
-      "onyx"
+      # "onyx" #TODO: enable when brew will support macOS 26
       "openlens"
       "openvpn-connect"
       "orbstack"
