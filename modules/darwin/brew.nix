@@ -20,15 +20,16 @@
     ];
     casks = [
       "alt-tab"
+      "anydesk"
       "appcleaner"
       "arc"
       "audacity"
       "avidemux"
       "betterdisplay"
       "burp-suite" # TODO: move to home-manager? (burpsuite)
-      #"bitwarden" # Using mas vertion
+      # "bitwarden" # Using mas vertion
       "calibre"
-      "citrix-workspace"
+      # "citrix-workspace"
       "chatgpt"
       # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
       "cursor"
@@ -65,6 +66,7 @@
       "obsidian"
       "onyx"
       "openlens"
+      "openvpn-connect"
       "orbstack"
       "outline-manager"
       "qflipper"
@@ -116,7 +118,7 @@
     };
     brews = [
       "adwaita-icon-theme"
-      "aom"
+      # "aom"
       "ansible"
       "sshpass"
       "aribb24"
