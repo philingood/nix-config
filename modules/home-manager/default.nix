@@ -55,6 +55,7 @@ let
       bandwhich # bandwidth monitor by process
       gping
       hostname
+      inetutils
       static-web-server # serve local static files
       trippy # mtr alternative
       xh # rust version of httpie / better curl
