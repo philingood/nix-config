@@ -340,7 +340,7 @@ in
         #checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         # brew update should no longer be needed; and brew upgrade should just happen, I think, but I might need to specify greedy per package
         #dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
-        dwsw = "darwin-rebuild switch --flake ~/nix-config/.#$(hostname -s)";
+        dwsw = "sudo darwin-rebuild switch --flake ~/nix-config/.#$(hostname -s)";
         #dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
