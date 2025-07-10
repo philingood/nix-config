@@ -68,6 +68,7 @@ let
       go
       grpcurl
       just
+      k9s
       kubectl
       kcat
       lazydocker
