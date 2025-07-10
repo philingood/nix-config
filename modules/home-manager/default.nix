@@ -56,6 +56,7 @@ let
       gping
       hostname
       inetutils
+      spoofdpi
       static-web-server # serve local static files
       trippy # mtr alternative
       xh # rust version of httpie / better curl
