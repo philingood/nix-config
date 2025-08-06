@@ -60,6 +60,7 @@
       "mathpix-snipping-tool"
       "mpv"
       "nextcloud"
+      "nextcloud-talk"
       "ngrok"
       "ntfstool"
       "obs" # TODO: move to nix version obs-studio when not broke
@@ -79,6 +80,7 @@
       "raycast"
       # "simpletex" # Failed to download
       "skim"
+      "steam"
       "stolendata-mpv"
       "swiftdefaultappsprefpane"
       "syncthing" # TODO: move to home-manager
@@ -138,6 +140,7 @@
       "qt"
       "recon-ng"
       "teleport"
+      "terminal-notifier"
       "whisper-cpp"
       "whisperkit-cli"
       "yt-dlp"
