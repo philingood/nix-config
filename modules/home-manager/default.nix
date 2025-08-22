@@ -74,6 +74,7 @@ let
       lazydocker
       lazygit
       libsecret
+      minio-client
       natscli
       neovide
       neovim
