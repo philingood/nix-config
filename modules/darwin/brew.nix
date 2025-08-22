@@ -125,6 +125,7 @@
       "sshpass"
       "aribb24"
       "at-spi2-core"
+      "bob"
       "brightness"
       "ca-certificates"
       "chkrootkit"
