@@ -47,6 +47,7 @@
       "homerow"
       "httpie"
       # "hugin" # does not work on apple silicon
+      "inkscape"
       "istat-menus"
       "iterm2"
       "jellyfin-media-player"
@@ -59,7 +60,7 @@
       "mactex-no-gui"
       "mathpix-snipping-tool"
       "mpv"
-      "nextcloud"
+      "nextcloud-vfs"
       "nextcloud-talk"
       "ngrok"
       "ntfstool"
