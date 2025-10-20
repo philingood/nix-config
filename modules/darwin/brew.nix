@@ -57,7 +57,7 @@
       "librewolf"
       "lm-studio"
       "macfuse"
-      "mactex-no-gui"
+      # "mactex-no-gui"
       "mathpix-snipping-tool"
       "mpv"
       "nextcloud-vfs"

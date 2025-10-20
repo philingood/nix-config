@@ -107,6 +107,7 @@ let
       procps
       pstree
       rink # calculator for unit conversions
+      texlive.combined.scheme-full
       vimv # shell script to bulk rename
       vulnix # check for live nix apps that are listed in NVD
     ]);
