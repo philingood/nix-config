@@ -46,12 +46,12 @@ let
       mediainfo # used by lf
       page # like less, but uses nvim, which is handy for selecting out text and such
       pandoc # for lf preview
-      poppler_utils # for pdf2text in lf
+      poppler-utils # for pdf2text in lf
       sourceHighlight # for lf preview
       zathura
 
       ## network
-      aria # cli downloader
+      aria2 # cli downloader
       bandwhich # bandwidth monitor by process
       gping
       hostname
