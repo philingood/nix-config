@@ -94,13 +94,15 @@ let
       btop
       catimg # ascii rendering of any image in terminal x-pltfrm
       ctags
+      fastfetch # display key software/version info in term
       fortune
       gnugrep
+      grex # regex generator
       htop
       ipcalc
+      jrnl # cli for making notes
       kalker # cli calculator; alt. to bc and calc
       kondo # free disk space by cleaning project build dirs
-      neofetch # display key software/version info in term
       nix-tree # explore dependencies
       optipng
       pastel # cli for color manipulation
