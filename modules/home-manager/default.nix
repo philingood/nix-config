@@ -267,8 +267,8 @@ in
       ICLOUD_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs";
       DEV_DIR="$HOME/Developer";
       CLOUDDOWNLOADS_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads";
-      NEXTCLOUD_DIR="$HOME/Nextcloud";
-      PATH="/opt/miniconda3/bin:$HOME/bin:$PATH";
+      NEXTCLOUD_DIR="$HOME/crazycloud";
+      PATH="$HOME/bin:$PATH";
       CONDA_ENVS_PATH="$HOME/.conda/envs";
     };
     plugins = [
@@ -311,7 +311,7 @@ in
         ts="tmux new -s";
         tnn="tmux neww";
 
-        nf="neofetch";
+        ff="fastfetch";
         of="onefetch";
 
         o="yazi";
@@ -320,7 +320,6 @@ in
         oic="yazi $ICLOUD_DIR";
         od="yazi $DEV_DIR";
         onc="yazi $NEXTCLOUD_DIR";
-        o1d="yazi $ONEDRIVE_DIR";
 
         k="kubectl";
         kc="kubectl config use-context";
