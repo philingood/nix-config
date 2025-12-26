@@ -45,7 +45,7 @@
       "hammerspoon"
       "heroic"
       "homerow"
-      "httpie"
+      "httpie-desktop"
       # "hugin" # does not work on apple silicon
       "inkscape"
       "istat-menus"
@@ -59,7 +59,7 @@
       "macfuse"
       # "mactex-no-gui"
       "mathpix-snipping-tool"
-      "mpv"
+      "stolendata-mpv"
       "nextcloud-vfs"
       "nextcloud-talk"
       "ngrok"
@@ -84,7 +84,7 @@
       "steam"
       "stolendata-mpv"
       "swiftdefaultappsprefpane"
-      "syncthing" # TODO: move to home-manager
+      "syncthing-app" # TODO: move to home-manager
       "telegram"
       "termius"
       "the-unarchiver"
