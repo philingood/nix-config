@@ -3,7 +3,21 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  nixpkgsConfig = import ../../config.nix;
+
+  # Access a package from the pinned stable channel via pkgs.stable.<name>,
+  # for when a package is broken on the unstable channel we track by default.
+  stableOverlay = final: prev: {
+    stable = import inputs.nixpkgs-stable-darwin {
+      inherit (final.stdenv.hostPlatform) system;
+      config = nixpkgsConfig;
+    };
+  };
+in {
+  nixpkgs.config = nixpkgsConfig;
+  nixpkgs.overlays = [stableOverlay];
+
   # environment setup
   environment = {
     # loginShell = pkgs.zsh;
