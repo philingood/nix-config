@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # 9099 (x86_64-darwin) isn't covered: GitHub no longer offers free Intel macOS
+    # runners, only paid "larger runners" (macos-14-large etc).
+    runs-on: macos-15 # aarch64-darwin, matches host "9089"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - name: nix flake check
+        run: nix flake check
+
+      - name: build darwinConfigurations.9089
+        run: nix build ".#darwinConfigurations.9089.system" -L

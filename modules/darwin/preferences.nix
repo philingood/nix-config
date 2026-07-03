@@ -1,4 +1,13 @@
-_: {
+_: let
+  # Machine-local overrides that shouldn't be committed (e.g. paths containing a private
+  # domain/email). Not part of the repo, so it's invisible to git entirely. Requires
+  # --impure (see the dwsw alias in modules/home-manager/default.nix).
+  localConfigPath = /Users/hacker/.config/nix-config-local.nix;
+  localConfig =
+    if builtins.pathExists localConfigPath
+    then import localConfigPath
+    else {};
+in {
   system.primaryUser = "hacker";
   system.defaults = {
     #
@@ -142,7 +151,7 @@ _: {
         askForPasswordDelay = 0;
       };
       "com.apple.screencapture" = {
-        location = "~/Pictures/Screenshots";
+        location = localConfig.screenshotLocation or "~/Pictures/Screenshots";
         type = "png";
       };
       "com.apple.ActivityMonitor" = {

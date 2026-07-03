@@ -2,9 +2,8 @@
   description = "Hacker`s flake";
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    ## TODO: not sure if it matters, but probably worth threading -darwin version through on darwin builds
-    nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # defaulting to unstable these days
 
     flake-compat = {
@@ -36,6 +35,10 @@
     homebrew-bundle.flake = false;
     homebrew-services.url = "github:homebrew/homebrew-services";
     homebrew-services.flake = false;
+    # Fallback tap for zathura, in case pkgs.stable.zathura (home-manager) ever breaks too.
+    # Commented out along with its uses in nix-homebrew.taps below and in modules/darwin/brew.nix.
+    # homebrew-zathura-tap.url = "github:homebrew-zathura/homebrew-zathura";
+    # homebrew-zathura-tap.flake = false;
     dotfiles = {
       type = "git";
       url = "https://github.com/philingood/dotfiles.git";
@@ -55,18 +58,6 @@
     , nix-homebrew
     , ...
     }: let
-    mkPkgs = system:
-      import nixpkgs {
-        inherit system;
-        inherit
-          (import ./modules/overlays.nix {
-            inherit inputs nixpkgs-unstable nixpkgs-stable nixpkgs-stable-darwin;
-          })
-          overlays
-          ;
-        config = import ./config.nix;
-      };
-
     mkHome = username: modules: {
       home-manager = {
         useGlobalPkgs = true;
@@ -85,7 +76,6 @@
         {
           "9089" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
-            pkgs = import nixpkgs { system = "aarch64-darwin"; };
             specialArgs = {
               inherit inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
             };
@@ -104,6 +94,7 @@
                     "homebrew/homebrew-cask" = homebrew-cask;
                     "homebrew/homebrew-bundle" = homebrew-bundle;
                     "homebrew/homebrew-services" = homebrew-services;
+                    # "homebrew-zathura/homebrew-zathura" = homebrew-zathura-tap; # fallback, see input above
                   };
                   # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
                   mutableTaps = false;
@@ -120,7 +111,6 @@
           };
           "9099" = darwin.lib.darwinSystem {
             system = "x86_64-darwin";
-            pkgs = import nixpkgs { system = "x86_64-darwin"; };
             specialArgs = {
               inherit inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
             };

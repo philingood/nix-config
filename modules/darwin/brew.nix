@@ -17,12 +17,14 @@
       "homebrew/bundle"
       "homebrew/cask"
       "homebrew/services"
+      # "homebrew-zathura/zathura" # fallback tap for zathura, in case pkgs.stable.zathura (home-manager) ever breaks too.
+      # Also needs registering in flake.nix's nix-homebrew.taps to reactivate (mutableTaps = false there).
     ];
     casks = [
-      "alt-tab"
-      "anydesk"
+      #"alt-tab"
+      #"anydesk"
       "appcleaner"
-      "arc"
+      #"arc"
       "audacity"
       "avidemux"
       "betterdisplay"
@@ -32,34 +34,37 @@
       # "citrix-workspace"
       "chatgpt"
       # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
+      "claude"
+      "claude-code"
       "cursor"
       "dbeaver-community"
       "discord"
       #"docker" # removed in favor of colima + docker cli
       "balenaetcher"  # tool for make bootable usb drive
-      "firefox@developer-edition"
-      "freetube" # trying out private youtube browsing after reading about how toxic their algo is
+      #"firefox@developer-edition"
+      "freecad"
+      #"freetube" # trying out private youtube browsing after reading about how toxic their algo is
       "ghostty"
-      "github"
+      #"github"
       "gpg-suite"
       "hammerspoon"
       "heroic"
       "homerow"
-      "httpie-desktop"
+      #"httpie-desktop"
       # "hugin" # does not work on apple silicon
       "inkscape"
-      "istat-menus"
+      #"istat-menus"
       "iterm2"
-      "jellyfin-media-player"
+      "font-liberation"
+      #"jellyfin-media-player"
       "karabiner-elements"
-      "kitty"
+      #"kitty"
       "keycastr"
       "librewolf"
       "lm-studio"
-      "macfuse"
+      # "macfuse"
       # "mactex-no-gui"
       "mathpix-snipping-tool"
-      "stolendata-mpv"
       "nextcloud-vfs"
       "nextcloud-talk"
       "ngrok"
@@ -67,12 +72,12 @@
       "obs" # TODO: move to nix version obs-studio when not broke
       "obsidian"
       # "onyx" #TODO: enable when brew will support macOS 26
-      "openlens"
+      #"openlens"
       "openvpn-connect"
       "orbstack"
-      "outline-manager"
+      #"outline-manager"
       "qflipper"
-      "qutebrowser" # TODO: move over when it builds on arm64 darwin
+      #"qutebrowser" # TODO: move over when it builds on arm64 darwin
       "qlmarkdown"
       "qlstephen"
       "qlvideo"
@@ -91,17 +96,11 @@
       #"topaz-photo-ai"
       #"topaz-video-ai"
       "tor-browser"
-      "tradingview"
-      "transmission"
-      # "$HOME/nix-config/modules/darwin/vscode.rb" # FIXME: this doesn't work. I want to use specific version of vscode. See https://code.visualstudio.com/docs/supporting/faq#_previous-release-versions
+      #"tradingview"
+      #"transmission"
       "whisky"
       "yandex-music"
-
-      # Keeping the next three together as they act in concert and are made by the same guy
-      # FIXME: This is PAY TO PLAY. So i need an ultimate solution!
-      # "kindavim" # ctrl-esc allows you to control an input area as if in vim normal mode
-      # "scrolla" # use vim commands to select scroll areas and scroll
-      # "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
+      # "zotero"
     ];
     masApps = {
       # "Apple Configurator 2" = 1037126344;
@@ -132,6 +131,7 @@
       "chkrootkit"
       "choose-gui"
       "ddcctl"
+      "goreleaser"
       "hashcat"
       "helm"
       "hydra"
@@ -140,12 +140,21 @@
       "node"
       "p0f"
       "qt"
+      "qwen-code"
       "recon-ng"
+      "spoofdpi"
       "teleport"
       "terminal-notifier"
+      "tesseract"
+      "tesseract-lang"
+      "tree-sitter-cli"
+      "typst"
+      "uv"
       "whisper-cpp"
       "whisperkit-cli"
       "yt-dlp"
+      # "homebrew-zathura/zathura/zathura" # fallback for zathura, see taps above
+      # "homebrew-zathura/zathura/zathura-pdf-mupdf"
     ];
   };
 }
