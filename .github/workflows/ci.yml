@@ -11,15 +11,9 @@ concurrency:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - host: "9089"
-            runner: macos-15 # aarch64-darwin
-          - host: "9099"
-            runner: macos-13 # x86_64-darwin
-    runs-on: ${{ matrix.runner }}
+    # 9099 (x86_64-darwin) isn't covered: GitHub no longer offers free Intel macOS
+    # runners, only paid "larger runners" (macos-14-large etc).
+    runs-on: macos-15 # aarch64-darwin, matches host "9089"
     steps:
       - uses: actions/checkout@v4
 
@@ -28,5 +22,5 @@ jobs:
       - name: nix flake check
         run: nix flake check
 
-      - name: build darwinConfigurations.${{ matrix.host }}
-        run: nix build ".#darwinConfigurations.${{ matrix.host }}.system" -L
+      - name: build darwinConfigurations.9089
+        run: nix build ".#darwinConfigurations.9089.system" -L
