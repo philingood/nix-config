@@ -48,7 +48,10 @@ let
       pandoc # for lf preview
       poppler-utils # for pdf2text in lf
       sourceHighlight # for lf preview
-      zathura
+      # unstable zathura fails to build on darwin (appstream is broken there); pulling from
+      # nixpkgs-stable-darwin instead via the pkgs.stable overlay (modules/darwin/core.nix).
+      # Fallback if this ever breaks too: brew version, commented out in modules/darwin/brew.nix.
+      stable.zathura
 
       ## network
       aria2 # cli downloader
@@ -56,7 +59,7 @@ let
       gping
       hostname
       inetutils
-      spoofdpi
+      # spoofdpi
       static-web-server # serve local static files
       trippy # mtr alternative
       xh # rust version of httpie / better curl
@@ -80,7 +83,7 @@ let
       neovim
       ollama
       onefetch
-      python312Packages.conda
+      # python312Packages.conda
       tldr
       tmux
 
@@ -191,8 +194,8 @@ in
         "\C-n":"cd ..\n"
         set editing-mode vi
     '';
-    ".config/ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/.config/ghostty/config";
-    ".config/karabiner/karabiner.json".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/.config/karabiner/karabiner.json";
+    # ghostty and karabiner configs are managed via stow from ~/dotfiles instead (frequently
+    # live-edited / GUI-driven, so nix's frozen flake-locked copy kept fighting the real files).
     # "Library/Application Support/Cursor/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/Library/Application Support/Cursor/User/settings.json";
   };
   programs.bat = {
@@ -346,10 +349,10 @@ in
         # brew update should no longer be needed; and brew upgrade should just happen, I think, but I might need to specify greedy per package
         #dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; popd ; dwswitchx ; dwshowupdates; popd";
         dwsw = "sudo darwin-rebuild switch --flake ~/nix-config/.#$(hostname -s)";
-        #dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
+        dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
-        #dwshowupdates = ''
+        dwshowupdates = ''
           #zsh -c "nix store diff-closures /nix/var/nix/profiles/system-*-link(om[2]) /nix/var/nix/profiles/system-*-link(om[1])"'';
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
