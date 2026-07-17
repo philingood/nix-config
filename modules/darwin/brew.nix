@@ -36,7 +36,7 @@
       # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
       "claude"
       "claude-code"
-      "cursor"
+      #"cursor"
       "dbeaver-community"
       "discord"
       #"docker" # removed in favor of colima + docker cli
@@ -84,6 +84,7 @@
       # "qt-creator"
       "radio-silence"
       "raycast"
+      "sfm"
       # "simpletex" # Failed to download
       "skim"
       "steam"
@@ -98,6 +99,7 @@
       "tor-browser"
       #"tradingview"
       #"transmission"
+      "visual-studio-code"
       "whisky"
       "yandex-music"
       # "zotero"
