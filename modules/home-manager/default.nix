@@ -40,6 +40,7 @@ let
       html2text
       imagemagick # for lf preview
       jq
+      yq-go # yaml/json/xml processor (mikefarah), provides `yq`
       less
       lynx
       mdcat # colorize markdown
@@ -67,12 +68,14 @@ let
       ## dev
       cargo
       devenv
+      fluxcd # gitops toolkit cli for kubernetes
       glab
       go
       grpcurl
       just
       k9s
       kubectl
+      kubelogin-oidc # kubectl oidc-login plugin (int128/kubelogin)
       kcat
       lazydocker
       lazygit
@@ -353,7 +356,7 @@ in
         #dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
         dwshowupdates = ''
-          #zsh -c "nix store diff-closures /nix/var/nix/profiles/system-*-link(om[2]) /nix/var/nix/profiles/system-*-link(om[1])"'';
+          zsh -c "nix store diff-closures /nix/var/nix/profiles/system-*-link(om[2]) /nix/var/nix/profiles/system-*-link(om[1])"'';
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
         hmswitch = ''
@@ -375,10 +378,10 @@ in
       command-t
       windsurf-vim
       idris-vim
-      sensible
-      surround
-      The_NERD_tree # file system explorer
-      fugitive vim-gitgutter # git 
+      vim-sensible
+      vim-surround
+      nerdtree # file system explorer
+      vim-fugitive vim-gitgutter # git
       # rose-pine # FIXME: Not works ?
       #YouCompleteMe
       vim-abolish

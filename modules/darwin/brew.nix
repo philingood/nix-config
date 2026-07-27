@@ -80,7 +80,7 @@
       #"qutebrowser" # TODO: move over when it builds on arm64 darwin
       "qlmarkdown"
       "qlstephen"
-      "qlvideo"
+      "quicklook-video"
       # "qt-creator"
       "radio-silence"
       "raycast"
