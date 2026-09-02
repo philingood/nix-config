@@ -66,7 +66,6 @@ let
       xh # rust version of httpie / better curl
 
       ## dev
-      bao
       cargo
       devenv
       fluxcd # gitops toolkit cli for kubernetes
@@ -87,6 +86,7 @@ let
       neovim
       ollama
       onefetch
+      openbao
       # python312Packages.conda
       sops
       tldr
