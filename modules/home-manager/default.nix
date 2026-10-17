@@ -66,13 +66,15 @@ let
       xh # rust version of httpie / better curl
 
       ## dev
-      cargo
+      # cargo # rustup
       devenv
       fluxcd # gitops toolkit cli for kubernetes
+      fortls
       glab
       go
       grpcurl
       just
+      just-lsp
       k9s
       kubectl
       kubelogin-oidc # kubectl oidc-login plugin (int128/kubelogin)
@@ -88,6 +90,7 @@ let
       onefetch
       openbao
       # python312Packages.conda
+      rustup
       sops
       tldr
       tmux
