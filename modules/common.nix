@@ -17,7 +17,7 @@
       home-manager.source = "${inputs.home-manager}";
       nixpkgs-unstable.source = "${inputs.nixpkgs-unstable}";
       nixpkgs-stable.source =
-        if pkgs.stdenvNoCC.isDarwin
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
         then "${inputs.nixpkgs-stable-darwin}"
         else "${inputs.nixpkgs-stable}";
     };
@@ -30,7 +30,7 @@
   # See https://github.com/nix-community/home-manager/issues/4026
   users.users.${username} = {
     home =
-      if pkgs.stdenvNoCC.isDarwin
+      if pkgs.stdenvNoCC.hostPlatform.isDarwin
       then "/Users/${username}"
       else "/home/${username}";
   };
@@ -43,7 +43,7 @@
     '';
     settings = {
       # Because macos sandbox can create issues https://github.com/NixOS/nix/issues/4119
-      sandbox = false; # !pkgs.stdenv.isDarwin;
+      sandbox = false; # !pkgs.stdenv.hostPlatform.isDarwin;
       #trusted-users = [ "${config.user.name}" "root" "@admin" "@wheel" ];
       trusted-users = ["${username}" "root" "@admin" "@wheel"];
       # TODO: turn this back on

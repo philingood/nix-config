@@ -120,13 +120,13 @@ let
       procps
       pstree
       rink # calculator for unit conversions
-      texlive.combined.scheme-full
+      texliveFull
       vimv # shell script to bulk rename
       vulnix # check for live nix apps that are listed in NVD
     ]);
   networkPkgs = with pkgs; [ mtr iftop ];
   guiPkgs = [ ]
-  ++ (lib.optionals pkgs.stdenv.isDarwin [
+  ++ (lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
     pkgs.colima # command line docker server replacement
     pkgs.docker
     pkgs.utm
@@ -235,24 +235,25 @@ in
     tmux.enableShellIntegration = true;
     tmux.shellIntegrationOptions = [ "-d 94%" ];
     defaultCommand = "\fd --type f --hidden --exclude .git";
-    fileWidgetCommand = "\fd --type f --hidden --exclude .git"; # for when ctrl-t is pressed
-    fileWidgetOptions = [
+    fileWidget.command = "\fd --type f --hidden --exclude .git"; # for when ctrl-t is pressed
+    fileWidget.options = [
       "--preview 'bat -n --color=always --line-range=:500 {}'"
       "--tiebreak=begin,length"
       "--bind=change:top"
     ];
-    changeDirWidgetCommand = "\fd --type d --hidden --follow --max-depth 3 --exclude .git";
+    changeDirWidget.command = "\fd --type d --hidden --follow --max-depth 3 --exclude .git";
   };
   programs.ssh = {
     enable = true;
+    # old home-manager defaults are deprecated; only non-default ssh values are kept
+    enableDefaultConfig = false;
     settings."*" = {
+      AddKeysToAgent = "yes";
       Compression = true;
       ControlMaster = "auto";
+      ControlPath = "~/.ssh/master-%r@%n:%p";
     };
     includes = [ "./sync/*.conf" ];
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
   };
   programs.gh = {
     enable = true;
@@ -265,7 +266,7 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     # let's the terminal track current working dir but only builds on linux
-    enableVteIntegration = if pkgs.stdenvNoCC.isDarwin then false else true;
+    enableVteIntegration = if pkgs.stdenvNoCC.hostPlatform.isDarwin then false else true;
     history = {
       expireDuplicatesFirst = true;
       ignoreSpace = true;
@@ -352,7 +353,7 @@ in
         "yt-fix" = "convert_vid_to_h264";
         "yt-fix-curdir" = "convert_v9_vids_to_h264";
       }
-      // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+      // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)
         # for use in SwiftDefaultApps
         #checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
@@ -365,7 +366,7 @@ in
         dwshowupdates = ''
           zsh -c "nix store diff-closures /nix/var/nix/profiles/system-*-link(om[2]) /nix/var/nix/profiles/system-*-link(om[1])"'';
       }
-      // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
+      // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
         hmswitch = ''
           nix-shell -p home-manager --run "home-manager switch --flake ~/.config/nixpkgs/.#$(hostname -s)"'';
         noupdate = "pushd ~/.config/nixpkgs; nix flake update; popd; noswitch";
@@ -520,7 +521,7 @@ in
     };
   };
   programs.alacritty = {
-    enable = pkgs.stdenv.isLinux; # only install on Linux
+    enable = pkgs.stdenv.hostPlatform.isLinux; # only install on Linux
     #package = pkgs.alacritty; # switching to unstable so i get 0.11 with undercurl support
     settings = {
       window.decorations = "full";
@@ -535,7 +536,7 @@ in
       font.italic.style = "Italic";
       font.bold_italic.style = "Bold Italic";
       font.size =
-        if pkgs.stdenvNoCC.isDarwin
+        if pkgs.stdenvNoCC.hostPlatform.isDarwin
         then 16
         else 9;
       shell.program = "${pkgs.zsh}/bin/zsh";
