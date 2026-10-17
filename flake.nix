@@ -23,9 +23,11 @@
     nps.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
-    #nix-homebrew.inputs.brew-src.follows = "brew-src";
-    nix-homebrew.inputs.nix-darwin.follows = "darwin";
+    # nix-homebrew pins its own brew release, which lags behind homebrew-core HEAD
+    # ("undefined method 'new' for an instance of Symbol"); bump the tag when that happens.
+    brew-src.url = "github:Homebrew/brew/7.0.9";
+    brew-src.flake = false;
+    nix-homebrew.inputs.brew-src.follows = "brew-src";
     # Declarative, pinned homebrew tap management
     homebrew-core.url = "github:homebrew/homebrew-core";
     homebrew-core.flake = false;

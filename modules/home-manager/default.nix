@@ -78,7 +78,7 @@ let
       k9s
       kubectl
       kubelogin-oidc # kubectl oidc-login plugin (int128/kubelogin)
-      kcat
+      stable.kcat # unstable libserdes fails to build against avro-c++ 1.12
       lazydocker
       lazygit
       libsecret
@@ -245,8 +245,10 @@ in
   };
   programs.ssh = {
     enable = true;
-    compression = true;
-    controlMaster = "auto";
+    settings."*" = {
+      Compression = true;
+      ControlMaster = "auto";
+    };
     includes = [ "./sync/*.conf" ];
     extraConfig = ''
       AddKeysToAgent yes
