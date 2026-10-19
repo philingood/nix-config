@@ -14,6 +14,11 @@
     };
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # Nixpkgs 26.11 dropped x86_64-darwin; 26.05 keeps it (security fixes until end of 2026).
+    # Used only by host "9099".
+    nixpkgs-x86-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
+    darwin-x86.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+    darwin-x86.inputs.nixpkgs.follows = "nixpkgs-x86-darwin";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
@@ -111,10 +116,15 @@
               ])
             ];
           };
-          "9099" = darwin.lib.darwinSystem {
+          "9099" = inputs.darwin-x86.lib.darwinSystem {
             system = "x86_64-darwin";
             specialArgs = {
-              inherit inputs nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
+              inherit nixpkgs-stable nixpkgs-stable-darwin nixpkgs-unstable username;
+              # core.nix reads inputs.darwin / inputs.nixpkgs for /etc/darwin and nixPath
+              inputs = inputs // {
+                darwin = inputs.darwin-x86;
+                nixpkgs = inputs.nixpkgs-x86-darwin;
+              };
             };
             modules = [
               ./modules/darwin/core.nix
