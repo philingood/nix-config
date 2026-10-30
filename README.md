@@ -84,12 +84,4 @@ Requires `--impure` (baked into the `dwsw` alias, but needed manually on first s
 
 ### dotfiles
 
-Karabiner and Ghostty configs are *not* managed by this repo — they're frequently live-edited (Karabiner via its own GUI), so they're stowed from [dotfiles](https://github.com/philingood/dotfiles) instead (cloned in Pre above):
-
-```bash
-cd ~/dotfiles
-```
-
-```bash
-./setup.sh
-```
+Configs live in [dotfiles](https://github.com/philingood/dotfiles), which must be cloned to `~/dotfiles` (Pre above). home-manager links them straight to that clone (`mkOutOfStoreSymlink`, see the top of `modules/home-manager/default.nix`), so edits there apply immediately, no rebuild needed; vim and tmux `source` their files from it. Don't run the dotfiles `setup.sh` (stow) on nix machines, it's for machines without nix.

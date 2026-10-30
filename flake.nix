@@ -46,12 +46,6 @@
     # Commented out along with its uses in nix-homebrew.taps below and in modules/darwin/brew.nix.
     # homebrew-zathura-tap.url = "github:homebrew-zathura/homebrew-zathura";
     # homebrew-zathura-tap.flake = false;
-    dotfiles = {
-      type = "git";
-      url = "https://github.com/philingood/dotfiles.git";
-      submodules = true;
-      flake = false;
-    };
   };
   outputs =
     inputs@{ self

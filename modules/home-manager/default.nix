@@ -5,6 +5,12 @@
 , ...
 }:
 let
+  # ~/dotfiles is a local clone of github.com/philingood/dotfiles (see README), laid out
+  # as stow packages. Configs are linked straight to the clone, not copied into the store,
+  # so edits (and apps rewriting their own config) take effect without a rebuild.
+  dotfiles = "${config.home.homeDirectory}/dotfiles";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+
   defaultPkgs =
     (with pkgs; [
       # filesystem
@@ -202,9 +208,21 @@ in
         "\C-n":"cd ..\n"
         set editing-mode vi
     '';
-    # ghostty and karabiner configs are managed via stow from ~/dotfiles instead (frequently
-    # live-edited / GUI-driven, so nix's frozen flake-locked copy kept fighting the real files).
-    # "Library/Application Support/Cursor/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${inputs.dotfiles.outPath}/Library/Application Support/Cursor/User/settings.json";
+    ".hammerspoon/init.lua".source = link "hammerspoon/.hammerspoon/init.lua";
+    "bin".source = link "bin/bin";
+    # Cursor isn't installed at the moment
+    # "Library/Application Support/Cursor/User/settings.json".source =
+    #   link "cursor/Library/Application Support/Cursor/User/settings.json";
+  };
+  xdg.configFile = {
+    # Whole directories: these apps replace their config file on save,
+    # which would turn a link to the file itself into a regular file
+    "karabiner".source = link "karabiner/.config/karabiner";
+    "htop".source = link "htop/.config/htop";
+
+    "ghostty/config".source = link "ghostty/.config/ghostty/config";
+    "neofetch/config.conf".source = link "neofetch/.config/neofetch/config.conf";
+    "zathura/zathurarc".source = link "zathura/.config/zathura/zathurarc";
   };
   programs.bat = {
     enable = true;
@@ -375,7 +393,7 @@ in
   };
   programs.vim = {
     enable = true;
-    extraConfig = builtins.readFile "${inputs.dotfiles.outPath}/.vimrc";
+    extraConfig = "source ${dotfiles}/vim/.vimrc";
     settings = {
        relativenumber = true;
        number = true;
@@ -403,7 +421,7 @@ in
   programs.tmux = {
     enable = true;
     clock24 = true;
-    extraConfig = builtins.readFile "${inputs.dotfiles.outPath}/.tmux.conf";
+    extraConfig = "source-file ${dotfiles}/tmux/.tmux.conf";
     plugins = with pkgs; [
       tmuxPlugins.better-mouse-mode
     ];
