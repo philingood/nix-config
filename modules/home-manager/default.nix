@@ -79,6 +79,8 @@ let
       glab
       go
       grpcurl
+      jira-cli-go
+      jiratui
       just
       just-lsp
       k9s
@@ -97,12 +99,13 @@ let
       openbao
       # python312Packages.conda
       rustup
-      sops
       tldr
       tmux
 
       ## security
+      bitwarden-cli
       git-crypt
+      sops
 
       ## misc
       asciinema # terminal screencast
@@ -303,6 +306,10 @@ in
       PATH="$HOME/bin:$PATH";
       CONDA_ENVS_PATH="$HOME/.conda/envs";
     };
+    # things to add to .zshrc
+    initContent = ''
+      export JIRA_API_TOKEN="$(security find-generic-password -a "$USER" -s jira-pat -w)"
+    '';
     plugins = [
       {
         name = "zsh-nix-shell";
