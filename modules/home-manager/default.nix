@@ -213,6 +213,10 @@ in
     '';
     ".hammerspoon/init.lua".source = link "hammerspoon/.hammerspoon/init.lua";
     "bin".source = link "bin/bin";
+    "Library/Application Support/Code/User/settings.json".source =
+      link "vscode/Library/Application Support/Code/User/settings.json";
+    "Library/Application Support/Code/User/keybindings.json".source =
+      link "vscode/Library/Application Support/Code/User/keybindings.json";
     # Cursor isn't installed at the moment
     # "Library/Application Support/Cursor/User/settings.json".source =
     #   link "cursor/Library/Application Support/Cursor/User/settings.json";
